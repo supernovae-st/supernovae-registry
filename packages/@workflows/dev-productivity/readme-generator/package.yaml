@@ -1,0 +1,16 @@
+name: "@workflows/dev-productivity/readme-generator"
+version: 1.0.0
+type: workflow
+description: "Generate README from codebase"
+
+files:
+  main: readme-generator.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, dev-productivity, readme-generator]
+  pattern: fan-out
+  category: dev-productivity
+  git:
+    date: 2026-02-23

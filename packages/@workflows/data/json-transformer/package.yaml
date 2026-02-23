@@ -1,0 +1,16 @@
+name: "@workflows/data/json-transformer"
+version: 1.0.0
+type: workflow
+description: "Transform JSON with LLM"
+
+files:
+  main: json-transformer.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, data, json-transformer]
+  pattern: linear-dag
+  category: data
+  git:
+    date: 2026-02-23

@@ -1,0 +1,16 @@
+name: "@workflows/dev-productivity/code-review"
+version: 1.0.0
+type: workflow
+description: "AI-powered code review"
+
+files:
+  main: code-review.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, dev-productivity, code-review]
+  pattern: parallel
+  category: dev-productivity
+  git:
+    date: 2026-02-23

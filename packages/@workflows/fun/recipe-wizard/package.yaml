@@ -1,0 +1,16 @@
+name: "@workflows/fun/recipe-wizard"
+version: 1.0.0
+type: workflow
+description: "Ingredients to recipe"
+
+files:
+  main: recipe-wizard.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, fun, recipe-wizard]
+  pattern: fan-out-parallel
+  category: fun
+  git:
+    date: 2026-02-23

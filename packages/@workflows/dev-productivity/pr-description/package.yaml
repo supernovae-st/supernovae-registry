@@ -1,0 +1,16 @@
+name: "@workflows/dev-productivity/pr-description"
+version: 1.0.0
+type: workflow
+description: "Generate PR description from git diff"
+
+files:
+  main: pr-description.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, dev-productivity, pr-description]
+  pattern: linear-dag
+  category: dev-productivity
+  git:
+    date: 2026-02-23

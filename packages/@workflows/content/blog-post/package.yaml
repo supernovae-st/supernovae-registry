@@ -1,0 +1,16 @@
+name: "@workflows/content/blog-post"
+version: 1.0.0
+type: workflow
+description: "Generate blog post from topic"
+
+files:
+  main: blog-post.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, content, blog-post]
+  pattern: linear-dag
+  category: content
+  git:
+    date: 2026-02-23

@@ -1,0 +1,16 @@
+name: "@workflows/research/web-research"
+version: 1.0.0
+type: workflow
+description: "Research with Perplexity MCP"
+
+files:
+  main: web-research.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, research, web-research]
+  pattern: mcp-invoke
+  category: research
+  git:
+    date: 2026-02-23

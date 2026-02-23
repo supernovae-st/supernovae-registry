@@ -1,0 +1,16 @@
+name: "@workflows/fun/story-collab"
+version: 1.0.0
+type: workflow
+description: "Multi-agent story creation"
+
+files:
+  main: story-collab.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, fun, story-collab]
+  pattern: agent-loop
+  category: fun
+  git:
+    date: 2026-02-23

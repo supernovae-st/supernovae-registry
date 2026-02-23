@@ -1,0 +1,29 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node (if using spn CLI locally)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Temp
+*.tmp
+*.bak
+.cache/
+
+# Local config
+.env
+.env.local
+*.local
+
+# Build artifacts
+dist/
+build/

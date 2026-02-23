@@ -1,0 +1,16 @@
+name: "@workflows/fun/trivia-quiz"
+version: 1.0.0
+type: workflow
+description: "Custom trivia generation"
+
+files:
+  main: trivia-quiz.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, fun, trivia-quiz]
+  pattern: generation-validation
+  category: fun
+  git:
+    date: 2026-02-23

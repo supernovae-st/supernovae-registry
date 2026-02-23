@@ -1,0 +1,16 @@
+name: "@workflows/fun/meme-generator"
+version: 1.0.0
+type: workflow
+description: "Generate meme captions"
+
+files:
+  main: meme-generator.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, fun, meme-generator]
+  pattern: parallel-selection
+  category: fun
+  git:
+    date: 2026-02-23

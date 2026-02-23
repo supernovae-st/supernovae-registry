@@ -1,0 +1,16 @@
+name: "@workflows/fun/movie-night"
+version: 1.0.0
+type: workflow
+description: "Mood-based movie picks"
+
+files:
+  main: movie-night.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, fun, movie-night]
+  pattern: conditional-mapping
+  category: fun
+  git:
+    date: 2026-02-23

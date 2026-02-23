@@ -1,0 +1,16 @@
+name: "@workflows/fun/travel-planner"
+version: 1.0.0
+type: workflow
+description: "AI travel itinerary"
+
+files:
+  main: travel-planner.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, fun, travel-planner]
+  pattern: agent-orchestration
+  category: fun
+  git:
+    date: 2026-02-23

@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "name": "supernovae-registry",
+  "description": "Open-source package registry for AI workflow skills, agents, and workflows",
+  "homepage": "https://supernovae.sh",
+  "packages": {
+    "@workflows/dev-productivity/pr-description": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Generate PR description from git diff",
+      "path": "packages/@workflows/dev-productivity/pr-description",
+      "pattern": "linear-dag"
+    },
+    "@workflows/dev-productivity/changelog-generator": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Generate changelog from commits",
+      "path": "packages/@workflows/dev-productivity/changelog-generator",
+      "pattern": "linear-dag"
+    },
+    "@workflows/dev-productivity/readme-generator": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Generate README from codebase",
+      "path": "packages/@workflows/dev-productivity/readme-generator",
+      "pattern": "fan-out"
+    },
+    "@workflows/dev-productivity/code-review": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "AI-powered code review",
+      "path": "packages/@workflows/dev-productivity/code-review",
+      "pattern": "parallel"
+    },
+    "@workflows/content/blog-post": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Generate blog post from topic",
+      "path": "packages/@workflows/content/blog-post",
+      "pattern": "linear-dag"
+    },
+    "@workflows/research/web-research": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Research with Perplexity MCP",
+      "path": "packages/@workflows/research/web-research",
+      "pattern": "mcp-invoke"
+    },
+    "@workflows/data/json-transformer": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Transform JSON with LLM",
+      "path": "packages/@workflows/data/json-transformer",
+      "pattern": "linear-dag"
+    },
+    "@workflows/automation/daily-standup": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Generate standup from git/Linear",
+      "path": "packages/@workflows/automation/daily-standup",
+      "pattern": "fan-out"
+    },
+    "@workflows/fun/weather-outfit": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Weather → outfit recommendation",
+      "path": "packages/@workflows/fun/weather-outfit",
+      "pattern": "fetch-infer"
+    },
+    "@workflows/fun/recipe-wizard": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Ingredients → recipe",
+      "path": "packages/@workflows/fun/recipe-wizard",
+      "pattern": "fan-out-parallel"
+    },
+    "@workflows/fun/story-collab": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Multi-agent story creation",
+      "path": "packages/@workflows/fun/story-collab",
+      "pattern": "agent-loop"
+    },
+    "@workflows/fun/meme-generator": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Generate meme captions",
+      "path": "packages/@workflows/fun/meme-generator",
+      "pattern": "parallel-selection"
+    },
+    "@workflows/fun/travel-planner": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "AI travel itinerary",
+      "path": "packages/@workflows/fun/travel-planner",
+      "pattern": "agent-orchestration"
+    },
+    "@workflows/fun/movie-night": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Mood-based movie picks",
+      "path": "packages/@workflows/fun/movie-night",
+      "pattern": "conditional-mapping"
+    },
+    "@workflows/fun/trivia-quiz": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Custom trivia generation",
+      "path": "packages/@workflows/fun/trivia-quiz",
+      "pattern": "generation-validation"
+    },
+    "@workflows/fun/fortune-teller": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "Daily cosmic fortune",
+      "path": "packages/@workflows/fun/fortune-teller",
+      "pattern": "creative-generation"
+    },
+    "@workflows/fun/github-stats": {
+      "version": "1.0.0",
+      "type": "workflow",
+      "description": "GitHub profile card",
+      "path": "packages/@workflows/fun/github-stats",
+      "pattern": "api-aggregation"
+    }
+  },
+  "scopes": {
+    "@nika": {
+      "description": "Nika workflow engine skills",
+      "count": 8
+    },
+    "@novanet": {
+      "description": "NovaNet knowledge graph skills",
+      "count": 2
+    },
+    "@shared": {
+      "description": "Cross-project development skills",
+      "count": 10
+    },
+    "@workflows": {
+      "description": "Ready-to-use workflow templates",
+      "count": 17
+    }
+  },
+  "updated": "2026-02-23T02:00:00Z"
+}

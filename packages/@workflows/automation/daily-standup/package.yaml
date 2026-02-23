@@ -1,0 +1,16 @@
+name: "@workflows/automation/daily-standup"
+version: 1.0.0
+type: workflow
+description: "Generate standup from git/Linear"
+
+files:
+  main: daily-standup.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, automation, daily-standup]
+  pattern: fan-out
+  category: automation
+  git:
+    date: 2026-02-23

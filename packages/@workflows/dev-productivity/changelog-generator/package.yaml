@@ -1,0 +1,16 @@
+name: "@workflows/dev-productivity/changelog-generator"
+version: 1.0.0
+type: workflow
+description: "Generate changelog from commits"
+
+files:
+  main: changelog-generator.nika.yaml
+
+metadata:
+  author: SuperNovae
+  license: MIT
+  keywords: [nika, workflow, dev-productivity, changelog-generator]
+  pattern: linear-dag
+  category: dev-productivity
+  git:
+    date: 2026-02-23

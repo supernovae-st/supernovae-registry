@@ -1,0 +1,6 @@
+{
+  "dl": "https://github.com/supernovae-st/supernovae-powers/releases/download/{name}/{version}.tar.gz",
+  "api": "https://api.supernovae.sh",
+  "registry": "https://github.com/supernovae-st/supernovae-registry",
+  "version": 1
+}

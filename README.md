@@ -8,6 +8,18 @@
 
 ---
 
+## 🦋 🐔 🐤 Mascots
+
+| Mascot | Role | What it does |
+|--------|------|--------------|
+| 🦋 **Nika** | **Runtime** | Executes YAML workflows, runs chat UI, launches agents |
+| 🐔 **Agent** | **One of 5 verbs** | Multi-turn agentic loop with MCP tools, spawns subagents |
+| 🐤 **Subagent** | **Spawned by agent** | Executes subtask, returns result to parent, depth-limited |
+
+> **Nika is NOT an agent.** Nika is the runtime (🦋 papillon) that orchestrates agents (🐔 space chicken).
+
+---
+
 ## Overview
 
 SuperNovae Registry is a **git-based package registry** for distributing AI development assets. It provides reusable skills, agents, and workflows that integrate with [Claude Code](https://claude.ai/code), [Cursor](https://cursor.sh), and the [Nika workflow engine](https://github.com/supernovae-studio/nika).

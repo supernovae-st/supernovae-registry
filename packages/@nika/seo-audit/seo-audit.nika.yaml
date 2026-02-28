@@ -1,0 +1,125 @@
+# @nika/seo-audit v0.1.0
+# SEO audit workflow with NovaNet entity context
+# Schema: @0.9
+
+name: seo-audit
+description: |
+  Performs a comprehensive SEO audit of a web page.
+  Optionally enriches analysis with NovaNet entity context.
+
+schema: "@0.9"
+
+mcp:
+  novanet:
+    command: "novanet-mcp"
+    args: ["--stdio"]
+
+tasks:
+  # Step 1: Fetch the target page
+  - id: fetch_page
+    fetch: $input.url
+    use.ctx: page_content
+
+  # Step 2: Get entity context from NovaNet (if entity provided)
+  - id: get_entity_context
+    when: $input.entity
+    invoke: novanet_generate
+    params:
+      entity: $input.entity
+      locale: $input.locale
+      forms:
+        - text
+        - title
+        - keywords
+    use.ctx: entity_context
+
+  # Step 3: Analyze SEO elements
+  - id: analyze_seo
+    infer: |
+      Analyze the SEO of this web page for the locale {{input.locale}}.
+
+      PAGE CONTENT:
+      {{page_content}}
+
+      {{#if entity_context}}
+      ENTITY CONTEXT (from NovaNet):
+      {{entity_context}}
+      {{/if}}
+
+      Provide a structured analysis covering:
+      1. Title tag (length, keywords, uniqueness)
+      2. Meta description (length, call-to-action, keywords)
+      3. Heading structure (H1-H6 hierarchy)
+      4. Keyword density and placement
+      5. Internal/external link analysis
+      6. Image alt text coverage
+      7. Schema.org markup presence
+      8. Mobile-friendliness indicators
+      9. Page load considerations
+      10. Locale-specific recommendations for {{input.locale}}
+
+      Score each category 1-10 and provide actionable recommendations.
+    provider: claude
+    model: claude-sonnet-4-20250514
+    use.result: seo_analysis
+
+  # Step 4: Generate structured report
+  - id: generate_report
+    infer: |
+      Convert this SEO analysis into a structured JSON report:
+
+      {{seo_analysis}}
+
+      Output format:
+      {
+        "url": "{{input.url}}",
+        "locale": "{{input.locale}}",
+        "overall_score": <number 1-100>,
+        "categories": [
+          {
+            "name": "<category>",
+            "score": <number 1-10>,
+            "findings": ["<finding1>", "<finding2>"],
+            "recommendations": ["<rec1>", "<rec2>"]
+          }
+        ],
+        "priority_actions": ["<top 3 actions>"],
+        "timestamp": "<ISO timestamp>"
+      }
+    provider: claude
+    model: claude-haiku-4-20250514
+    use.result: report
+
+  # Step 5: Generate markdown summary
+  - id: generate_markdown
+    infer: |
+      Create a concise markdown report from this SEO analysis:
+
+      {{seo_analysis}}
+
+      Format as:
+      # SEO Audit: {{input.url}}
+
+      **Overall Score:** X/100
+      **Locale:** {{input.locale}}
+
+      ## Summary
+      <2-3 sentence summary>
+
+      ## Key Findings
+      - <bullet points>
+
+      ## Priority Actions
+      1. <top 3 actions>
+
+      ## Category Scores
+      | Category | Score | Status |
+      |----------|-------|--------|
+      | ... | X/10 | emoji |
+    provider: claude
+    model: claude-haiku-4-20250514
+    use.result: markdown
+
+output:
+  report: $report
+  markdown: $markdown

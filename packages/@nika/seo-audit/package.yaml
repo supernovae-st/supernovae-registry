@@ -1,0 +1,47 @@
+name: "@nika/seo-audit"
+version: "0.1.0"
+description: "SEO audit workflow with NovaNet entity context"
+schema: "@0.9"
+
+authors:
+  - "SuperNovae Studio <hello@supernovae.studio>"
+
+license: "MIT"
+
+keywords:
+  - seo
+  - audit
+  - novanet
+  - analysis
+
+repository: "https://github.com/supernovae-st/supernovae-registry"
+
+dependencies: {}
+
+mcp:
+  novanet:
+    command: "novanet-mcp"
+    args: ["--stdio"]
+
+inputs:
+  url:
+    type: string
+    required: true
+    description: "URL of the page to audit"
+  locale:
+    type: string
+    required: true
+    default: "en-US"
+    description: "Target locale for SEO analysis (BCP-47)"
+  entity:
+    type: string
+    required: false
+    description: "Optional NovaNet entity key for context enrichment"
+
+outputs:
+  report:
+    type: object
+    description: "Structured SEO audit report"
+  markdown:
+    type: string
+    description: "Human-readable markdown report"

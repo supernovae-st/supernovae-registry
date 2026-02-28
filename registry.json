@@ -4,6 +4,14 @@
   "description": "Open-source package registry for AI workflow skills, agents, and workflows",
   "homepage": "https://supernovae.sh",
   "packages": {
+    "@nika/seo-audit": {
+      "version": "0.1.0",
+      "type": "workflow",
+      "description": "SEO audit workflow with NovaNet entity context",
+      "path": "packages/@nika/seo-audit",
+      "pattern": "mcp-invoke",
+      "schema": "@0.9"
+    },
     "@workflows/dev-productivity/pr-description": {
       "version": "1.0.0",
       "type": "workflow",
@@ -126,8 +134,8 @@
   },
   "scopes": {
     "@nika": {
-      "description": "Nika workflow engine skills",
-      "count": 8
+      "description": "Nika workflow engine packages",
+      "count": 1
     },
     "@novanet": {
       "description": "NovaNet knowledge graph skills",
@@ -142,5 +150,5 @@
       "count": 17
     }
   },
-  "updated": "2026-02-23T02:00:00Z"
+  "updated": "2026-02-28T10:00:00Z"
 }

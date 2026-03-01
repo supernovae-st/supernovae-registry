@@ -1,8 +1,40 @@
 {
-  "version": 1,
+  "version": 2,
   "name": "supernovae-registry",
-  "description": "Open-source package registry for AI workflow skills, agents, and workflows",
+  "description": "Open-source package registry for AI workflows, agents, skills, prompts, jobs, and schemas",
   "homepage": "https://supernovae.sh",
+  "types": {
+    "workflow": {
+      "description": "Nika YAML DAG workflows (.nika.yaml)",
+      "file_pattern": "*.nika.yaml",
+      "scopes": ["@workflows", "@nika"]
+    },
+    "agent": {
+      "description": "Agent definitions (.agent.yaml, .agent.md)",
+      "file_pattern": "*.agent.{yaml,md}",
+      "scopes": ["@agents", "@nika"]
+    },
+    "skill": {
+      "description": "Skill definitions (.skill.yaml, .skill.md)",
+      "file_pattern": "*.skill.{yaml,md}",
+      "scopes": ["@skills", "@nika"]
+    },
+    "prompt": {
+      "description": "Prompt templates (prompts/*.md)",
+      "file_pattern": "prompts/*.md",
+      "scopes": ["@prompts", "@nika"]
+    },
+    "job": {
+      "description": "Job triggers (.job.toml)",
+      "file_pattern": "*.job.toml",
+      "scopes": ["@jobs", "@nika"]
+    },
+    "schema": {
+      "description": "NovaNet schema definitions (node/arc classes)",
+      "file_pattern": "*.yaml",
+      "scopes": ["@schemas", "@novanet"]
+    }
+  },
   "packages": {
     "@nika/seo-audit": {
       "version": "0.1.0",
@@ -130,25 +162,253 @@
       "description": "GitHub profile card",
       "path": "packages/@workflows/fun/github-stats",
       "pattern": "api-aggregation"
+    },
+    "@agents/code-reviewer": {
+      "version": "1.0.0",
+      "type": "agent",
+      "description": "Multi-turn code review agent with context awareness",
+      "path": "packages/@agents/code-reviewer",
+      "tools": ["read_file", "grep", "glob"]
+    },
+    "@agents/research-assistant": {
+      "version": "1.0.0",
+      "type": "agent",
+      "description": "Web research agent with source synthesis",
+      "path": "packages/@agents/research-assistant",
+      "tools": ["web_search", "fetch", "summarize"]
+    },
+    "@agents/refactoring-expert": {
+      "version": "1.0.0",
+      "type": "agent",
+      "description": "Code refactoring with pattern detection",
+      "path": "packages/@agents/refactoring-expert",
+      "tools": ["read_file", "edit_file", "run_tests"]
+    },
+    "@agents/test-writer": {
+      "version": "1.0.0",
+      "type": "agent",
+      "description": "TDD agent that writes tests before implementation",
+      "path": "packages/@agents/test-writer",
+      "tools": ["read_file", "write_file", "run_tests"]
+    },
+    "@agents/documentation-writer": {
+      "version": "1.0.0",
+      "type": "agent",
+      "description": "Generate docs from codebase analysis",
+      "path": "packages/@agents/documentation-writer",
+      "tools": ["read_file", "glob", "write_file"]
+    },
+    "@skills/brainstorming": {
+      "version": "1.0.0",
+      "type": "skill",
+      "description": "Socratic brainstorming for idea refinement",
+      "path": "packages/@skills/brainstorming",
+      "format": "markdown"
+    },
+    "@skills/tdd": {
+      "version": "1.0.0",
+      "type": "skill",
+      "description": "Test-driven development workflow",
+      "path": "packages/@skills/tdd",
+      "format": "markdown"
+    },
+    "@skills/debugging": {
+      "version": "1.0.0",
+      "type": "skill",
+      "description": "Systematic debugging methodology",
+      "path": "packages/@skills/debugging",
+      "format": "markdown"
+    },
+    "@skills/code-review": {
+      "version": "1.0.0",
+      "type": "skill",
+      "description": "Code review best practices",
+      "path": "packages/@skills/code-review",
+      "format": "markdown"
+    },
+    "@skills/git-workflow": {
+      "version": "1.0.0",
+      "type": "skill",
+      "description": "Git branching and commit conventions",
+      "path": "packages/@skills/git-workflow",
+      "format": "markdown"
+    },
+    "@skills/api-design": {
+      "version": "1.0.0",
+      "type": "skill",
+      "description": "RESTful API design patterns",
+      "path": "packages/@skills/api-design",
+      "format": "markdown"
+    },
+    "@skills/security-review": {
+      "version": "1.0.0",
+      "type": "skill",
+      "description": "Security vulnerability assessment",
+      "path": "packages/@skills/security-review",
+      "format": "markdown"
+    },
+    "@skills/performance-optimization": {
+      "version": "1.0.0",
+      "type": "skill",
+      "description": "Performance profiling and optimization",
+      "path": "packages/@skills/performance-optimization",
+      "format": "markdown"
+    },
+    "@prompts/commit-message": {
+      "version": "1.0.0",
+      "type": "prompt",
+      "description": "Generate conventional commit messages",
+      "path": "packages/@prompts/commit-message"
+    },
+    "@prompts/pr-review": {
+      "version": "1.0.0",
+      "type": "prompt",
+      "description": "PR review with actionable feedback",
+      "path": "packages/@prompts/pr-review"
+    },
+    "@prompts/code-explanation": {
+      "version": "1.0.0",
+      "type": "prompt",
+      "description": "Explain code with examples",
+      "path": "packages/@prompts/code-explanation"
+    },
+    "@prompts/bug-report": {
+      "version": "1.0.0",
+      "type": "prompt",
+      "description": "Generate structured bug reports",
+      "path": "packages/@prompts/bug-report"
+    },
+    "@prompts/api-docs": {
+      "version": "1.0.0",
+      "type": "prompt",
+      "description": "Generate API documentation",
+      "path": "packages/@prompts/api-docs"
+    },
+    "@prompts/user-story": {
+      "version": "1.0.0",
+      "type": "prompt",
+      "description": "Convert requirements to user stories",
+      "path": "packages/@prompts/user-story"
+    },
+    "@jobs/daily-digest": {
+      "version": "1.0.0",
+      "type": "job",
+      "description": "Daily summary email at 9am",
+      "path": "packages/@jobs/daily-digest",
+      "trigger": "cron",
+      "schedule": "0 9 * * *"
+    },
+    "@jobs/pr-watcher": {
+      "version": "1.0.0",
+      "type": "job",
+      "description": "Auto-review new PRs via webhook",
+      "path": "packages/@jobs/pr-watcher",
+      "trigger": "webhook"
+    },
+    "@jobs/file-monitor": {
+      "version": "1.0.0",
+      "type": "job",
+      "description": "Watch file changes and trigger workflows",
+      "path": "packages/@jobs/file-monitor",
+      "trigger": "watch"
+    },
+    "@jobs/weekly-report": {
+      "version": "1.0.0",
+      "type": "job",
+      "description": "Weekly project status report",
+      "path": "packages/@jobs/weekly-report",
+      "trigger": "cron",
+      "schedule": "0 10 * * 1"
+    },
+    "@jobs/deployment-notifier": {
+      "version": "1.0.0",
+      "type": "job",
+      "description": "Notify team on deployment events",
+      "path": "packages/@jobs/deployment-notifier",
+      "trigger": "webhook"
+    },
+    "@schemas/novanet-core": {
+      "version": "0.14.0",
+      "type": "schema",
+      "description": "Core NovaNet node and arc classes",
+      "path": "packages/@schemas/novanet-core",
+      "nodes": 61,
+      "arcs": 160
+    },
+    "@schemas/seo-extension": {
+      "version": "1.0.0",
+      "type": "schema",
+      "description": "SEO-specific nodes (keywords, rankings)",
+      "path": "packages/@schemas/seo-extension",
+      "extends": "@schemas/novanet-core"
+    },
+    "@schemas/geo-extension": {
+      "version": "1.0.0",
+      "type": "schema",
+      "description": "Geographic localization nodes",
+      "path": "packages/@schemas/geo-extension",
+      "extends": "@schemas/novanet-core"
+    },
+    "@schemas/ecommerce-extension": {
+      "version": "1.0.0",
+      "type": "schema",
+      "description": "E-commerce product/catalog nodes",
+      "path": "packages/@schemas/ecommerce-extension",
+      "extends": "@schemas/novanet-core"
     }
   },
   "scopes": {
     "@nika": {
       "description": "Nika workflow engine packages",
+      "types": ["workflow"],
       "count": 1
     },
     "@novanet": {
-      "description": "NovaNet knowledge graph skills",
-      "count": 0
-    },
-    "@shared": {
-      "description": "Cross-project development skills",
+      "description": "NovaNet knowledge graph packages",
+      "types": ["schema"],
       "count": 0
     },
     "@workflows": {
       "description": "Ready-to-use workflow templates",
+      "types": ["workflow"],
       "count": 17
+    },
+    "@agents": {
+      "description": "Multi-turn agent definitions",
+      "types": ["agent"],
+      "count": 5
+    },
+    "@skills": {
+      "description": "Reusable skill definitions",
+      "types": ["skill"],
+      "count": 8
+    },
+    "@prompts": {
+      "description": "Prompt templates",
+      "types": ["prompt"],
+      "count": 6
+    },
+    "@jobs": {
+      "description": "Scheduled job definitions",
+      "types": ["job"],
+      "count": 5
+    },
+    "@schemas": {
+      "description": "NovaNet schema extensions",
+      "types": ["schema"],
+      "count": 4
     }
   },
-  "updated": "2026-03-01T12:00:00Z"
+  "stats": {
+    "total_packages": 46,
+    "by_type": {
+      "workflow": 18,
+      "agent": 5,
+      "skill": 8,
+      "prompt": 6,
+      "job": 5,
+      "schema": 4
+    }
+  },
+  "updated": "2026-03-01T15:00:00Z"
 }

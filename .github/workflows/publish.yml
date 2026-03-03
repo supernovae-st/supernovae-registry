@@ -1,0 +1,67 @@
+name: Publish Package
+
+on:
+  push:
+    paths:
+      - 'packages/**'
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Find changed packages
+        id: changes
+        run: |
+          # Get changed package directories
+          CHANGED=$(git diff --name-only HEAD~1 HEAD -- packages/ | \
+            xargs -I {} dirname {} | \
+            sort -u | \
+            grep -E 'packages/@[a-z]+/' || true)
+
+          if [ -z "$CHANGED" ]; then
+            echo "No package changes detected"
+            echo "packages=" >> $GITHUB_OUTPUT
+          else
+            echo "Changed packages:"
+            echo "$CHANGED"
+            echo "packages<<EOF" >> $GITHUB_OUTPUT
+            echo "$CHANGED" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Publish changed packages
+        if: steps.changes.outputs.packages != ''
+        env:
+          CHANGED_PACKAGES: ${{ steps.changes.outputs.packages }}
+        run: |
+          echo "$CHANGED_PACKAGES" | while read -r pkg_dir; do
+            if [ -n "$pkg_dir" ] && [ -d "$pkg_dir" ]; then
+              echo "Publishing: $pkg_dir"
+              ./scripts/publish.sh "$pkg_dir"
+            fi
+          done
+
+      - name: Commit and push
+        if: steps.changes.outputs.packages != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add releases/ index/
+
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "📦 ci: auto-publish updated packages"
+            git push
+          fi

@@ -1,0 +1,98 @@
+name: Validate Packages
+
+on:
+  pull_request:
+    paths:
+      - 'packages/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: Validate package.yaml files
+        run: |
+          ERRORS=0
+
+          find packages -name "package.yaml" -o -name "manifest.yaml" | while read -r manifest; do
+            echo "Validating: $manifest"
+
+            # Check required fields
+            NAME=$(yq eval '.name' "$manifest")
+            VERSION=$(yq eval '.version' "$manifest")
+            TYPE=$(yq eval '.type' "$manifest")
+
+            if [ "$NAME" = "null" ] || [ -z "$NAME" ]; then
+              echo "❌ Missing 'name' in $manifest"
+              ERRORS=$((ERRORS + 1))
+            fi
+
+            if [ "$VERSION" = "null" ] || [ -z "$VERSION" ]; then
+              echo "❌ Missing 'version' in $manifest"
+              ERRORS=$((ERRORS + 1))
+            fi
+
+            # Type is optional now (defaults to 'workflow')
+            if [ "$TYPE" = "null" ] || [ -z "$TYPE" ]; then
+              echo "⚠️ No 'type' in $manifest (will default to 'workflow')"
+            fi
+
+            # Validate name format
+            if [[ ! "$NAME" =~ ^@[a-z]+/ ]]; then
+              echo "❌ Invalid name format: $NAME (must start with @scope/)"
+              ERRORS=$((ERRORS + 1))
+            fi
+
+            # Validate version format (semver)
+            if [[ ! "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+              echo "❌ Invalid version format: $VERSION (must be semver)"
+              ERRORS=$((ERRORS + 1))
+            fi
+          done
+
+          if [ $ERRORS -gt 0 ]; then
+            echo ""
+            echo "❌ Validation failed with $ERRORS errors"
+            exit 1
+          fi
+
+          echo "✅ All packages valid"
+
+      - name: Check for duplicate versions
+        run: |
+          find packages -name "package.yaml" -o -name "manifest.yaml" | while read -r manifest; do
+            NAME=$(yq eval '.name' "$manifest")
+            VERSION=$(yq eval '.version' "$manifest")
+
+            # Check if version already exists in index
+            # Map scope to prefix
+            SCOPE=$(echo "$NAME" | sed 's/@\([^/]*\)\/.*/\1/')
+            PATH_PART=$(echo "$NAME" | sed 's/@[^/]*\/\(.*\)/\1/')
+
+            case "$SCOPE" in
+              workflows) PREFIX="w" ;;
+              nika) PREFIX="n" ;;
+              agents) PREFIX="a" ;;
+              skills) PREFIX="s" ;;
+              prompts) PREFIX="p" ;;
+              jobs) PREFIX="j" ;;
+              community) PREFIX="c" ;;
+              *) PREFIX="${SCOPE:0:1}" ;;
+            esac
+
+            INDEX_FILE="index/@$PREFIX/$PATH_PART"
+
+            if [ -f "$INDEX_FILE" ]; then
+              if grep -q "\"vers\":\"$VERSION\"" "$INDEX_FILE"; then
+                echo "⚠️ Warning: Version $VERSION already published for $NAME"
+              fi
+            fi
+          done

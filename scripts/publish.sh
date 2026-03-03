@@ -45,8 +45,13 @@ if [ ! -d "$PACKAGE_DIR" ]; then
     error "Package directory not found: $PACKAGE_DIR"
 fi
 
-if [ ! -f "$PACKAGE_DIR/manifest.yaml" ]; then
-    error "manifest.yaml not found in $PACKAGE_DIR"
+# Check for package metadata file (manifest.yaml or package.yaml)
+if [ -f "$PACKAGE_DIR/manifest.yaml" ]; then
+    MANIFEST_FILE="$PACKAGE_DIR/manifest.yaml"
+elif [ -f "$PACKAGE_DIR/package.yaml" ]; then
+    MANIFEST_FILE="$PACKAGE_DIR/package.yaml"
+else
+    error "No manifest.yaml or package.yaml found in $PACKAGE_DIR"
 fi
 
 # Get registry root (parent of scripts/)
@@ -58,27 +63,29 @@ info "Registry root: $REGISTRY_ROOT"
 
 # Parse manifest using yq (or fallback to grep/sed)
 if command -v yq &> /dev/null; then
-    PACKAGE_NAME=$(yq eval '.name' "$PACKAGE_DIR/manifest.yaml")
-    PACKAGE_VERSION=$(yq eval '.version' "$PACKAGE_DIR/manifest.yaml")
-    PACKAGE_TYPE=$(yq eval '.type' "$PACKAGE_DIR/manifest.yaml")
+    PACKAGE_NAME=$(yq eval '.name' "$MANIFEST_FILE")
+    PACKAGE_VERSION=$(yq eval '.version' "$MANIFEST_FILE")
+    PACKAGE_TYPE=$(yq eval '.type' "$MANIFEST_FILE")
 else
-    # Fallback to grep/sed/awk
-    PACKAGE_NAME=$(grep '^name:' "$PACKAGE_DIR/manifest.yaml" | awk '{print $2}' | tr -d '"')
-    PACKAGE_VERSION=$(grep '^version:' "$PACKAGE_DIR/manifest.yaml" | awk '{print $2}' | tr -d '"')
-    PACKAGE_TYPE=$(grep '^type:' "$PACKAGE_DIR/manifest.yaml" | awk '{print $2}' | tr -d '"')
+    # Fallback to grep/sed/awk (use || true to handle missing fields)
+    PACKAGE_NAME=$(grep '^name:' "$MANIFEST_FILE" | awk '{print $2}' | tr -d '"' || true)
+    PACKAGE_VERSION=$(grep '^version:' "$MANIFEST_FILE" | awk '{print $2}' | tr -d '"' || true)
+    PACKAGE_TYPE=$(grep '^type:' "$MANIFEST_FILE" | awk '{print $2}' | tr -d '"' || true)
 fi
 
 # Validate extracted values
-if [ -z "$PACKAGE_NAME" ]; then
-    error "Could not extract package name from manifest.yaml"
+if [ -z "$PACKAGE_NAME" ] || [ "$PACKAGE_NAME" = "null" ]; then
+    error "Could not extract package name from package manifest"
 fi
 
-if [ -z "$PACKAGE_VERSION" ]; then
-    error "Could not extract package version from manifest.yaml"
+if [ -z "$PACKAGE_VERSION" ] || [ "$PACKAGE_VERSION" = "null" ]; then
+    error "Could not extract package version from package manifest"
 fi
 
-if [ -z "$PACKAGE_TYPE" ]; then
-    error "Could not extract package type from manifest.yaml"
+# Type is optional, default to 'workflow' if not specified
+if [ -z "$PACKAGE_TYPE" ] || [ "$PACKAGE_TYPE" = "null" ]; then
+    PACKAGE_TYPE="workflow"
+    warning "No type specified, defaulting to 'workflow'"
 fi
 
 info "Package: $PACKAGE_NAME"
@@ -160,7 +167,12 @@ INDEX_ENTRY=$(cat <<EOF
 EOF
 )
 
-# Append to index file
+# Remove existing entry for this version if present, then append
+if [ -f "$INDEX_FILE" ]; then
+    # Filter out any existing entry for this version
+    grep -v "\"vers\":\"$PACKAGE_VERSION\"" "$INDEX_FILE" > "$INDEX_FILE.tmp" || true
+    mv "$INDEX_FILE.tmp" "$INDEX_FILE"
+fi
 echo "$INDEX_ENTRY" >> "$INDEX_FILE"
 
 success "Index entry added to: $INDEX_FILE"

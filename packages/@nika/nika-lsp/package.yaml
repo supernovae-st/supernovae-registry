@@ -1,0 +1,93 @@
+# @nika/nika-lsp — Language Server for Nika Workflows
+#
+# This package provides discoverability for nika-lsp.
+# Installation is via crates.io or Homebrew (not spn add).
+
+name: "@nika/nika-lsp"
+version: "0.21.0"
+description: "Language Server Protocol implementation for Nika YAML workflows"
+type: skill  # Closest type for tooling (no binary type in spn)
+
+metadata:
+  homepage: "https://nika.sh"
+  repository: "https://github.com/SuperNovae-studio/nika"
+  documentation: "https://docs.rs/nika-lsp"
+  license: "MIT"
+  authors:
+    - "Thibaut Melen <thibaut@supernovae.studio>"
+  keywords:
+    - lsp
+    - yaml
+    - workflow
+    - nika
+    - language-server
+    - editor
+    - ide
+
+# Installation instructions (binary, not spn package)
+install:
+  # Primary: crates.io
+  cargo: "cargo install nika-lsp"
+
+  # Alternative: Homebrew
+  brew: "brew install supernovae-st/tap/nika-lsp"
+
+  # Alternative: From source
+  source: |
+    git clone https://github.com/SuperNovae-studio/nika
+    cd nika/tools/nika-lsp
+    cargo install --path .
+
+# Editor configuration
+editors:
+  vscode:
+    extension: "supernovae.nika-lsp"
+    settings: |
+      {
+        "nika.lsp.path": "nika-lsp",
+        "yaml.schemas": {
+          "https://nika.sh/schema/workflow.json": "*.nika.yaml"
+        }
+      }
+
+  neovim:
+    config: |
+      require('lspconfig').nika_lsp.setup({
+        cmd = { 'nika-lsp' },
+        filetypes = { 'yaml' },
+        root_dir = function(fname)
+          return vim.fs.find({ '.nika', 'nika.yaml' }, { upward = true })[1]
+        end,
+      })
+
+  helix:
+    config: |
+      [[language]]
+      name = "yaml"
+      language-servers = ["nika-lsp"]
+
+      [language-server.nika-lsp]
+      command = "nika-lsp"
+
+# Features provided by the LSP
+features:
+  - Syntax validation for .nika.yaml workflows
+  - Autocompletion for 5 semantic verbs (infer, exec, fetch, invoke, agent)
+  - MCP tool discovery and completion
+  - Task dependency validation
+  - Template variable completion ({{use.*}}, {{inputs.*}})
+  - Go-to-definition for task references
+  - Hover documentation for verbs and parameters
+  - Diagnostic errors with NIKA error codes
+
+# Platforms
+platforms:
+  - linux-x64
+  - linux-arm64
+  - darwin-x64
+  - darwin-arm64
+  - windows-x64
+
+# Note: This is a binary tool, not a workflow package.
+# Use `cargo install nika-lsp` or `brew install supernovae-st/tap/nika-lsp`
+# spn sync will configure editor integrations after binary is installed.

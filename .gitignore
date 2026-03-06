@@ -27,3 +27,7 @@ yarn-error.log
 # Build artifacts
 dist/
 build/
+dx
+dx/
+.claude
+.claude/

@@ -1,38 +1,54 @@
 {
-  "version": 2,
+  "version": 3,
   "name": "supernovae-registry",
-  "description": "Open-source package registry for AI workflows, agents, skills, prompts, jobs, and schemas",
+  "description": "Open-source package registry for AI workflows, agents, skills, prompts, jobs, schemas, MCP servers, and models",
   "homepage": "https://supernovae.sh",
   "types": {
     "workflow": {
       "description": "Nika YAML DAG workflows (.nika.yaml)",
       "file_pattern": "*.nika.yaml",
-      "scopes": ["@workflows", "@nika"]
+      "scopes": ["@workflows", "@nika"],
+      "source_types": ["tarball"]
     },
     "agent": {
       "description": "Agent definitions (.agent.yaml, .agent.md)",
       "file_pattern": "*.agent.{yaml,md}",
-      "scopes": ["@agents", "@nika"]
+      "scopes": ["@agents", "@nika"],
+      "source_types": ["tarball"]
     },
     "skill": {
       "description": "Skill definitions (.skill.yaml, .skill.md)",
       "file_pattern": "*.skill.{yaml,md}",
-      "scopes": ["@skills", "@nika"]
+      "scopes": ["@skills", "@nika"],
+      "source_types": ["tarball"]
     },
     "prompt": {
       "description": "Prompt templates (prompts/*.md)",
       "file_pattern": "prompts/*.md",
-      "scopes": ["@prompts", "@nika"]
+      "scopes": ["@prompts", "@nika"],
+      "source_types": ["tarball"]
     },
     "job": {
       "description": "Job triggers (.job.toml)",
       "file_pattern": "*.job.toml",
-      "scopes": ["@jobs", "@nika"]
+      "scopes": ["@jobs", "@nika"],
+      "source_types": ["tarball"]
     },
     "schema": {
       "description": "NovaNet schema definitions (node/arc classes)",
       "file_pattern": "*.yaml",
-      "scopes": ["@schemas", "@novanet"]
+      "scopes": ["@schemas", "@novanet"],
+      "source_types": ["tarball"]
+    },
+    "mcp": {
+      "description": "MCP (Model Context Protocol) servers",
+      "scopes": ["@mcp"],
+      "source_types": ["npm", "pypi", "binary"]
+    },
+    "model": {
+      "description": "LLM models for local inference",
+      "scopes": ["@models"],
+      "source_types": ["ollama", "huggingface"]
     }
   },
   "packages": {
@@ -355,6 +371,494 @@
       "description": "E-commerce product/catalog nodes",
       "path": "packages/@schemas/ecommerce-extension",
       "extends": "@schemas/novanet-core"
+    },
+    "@mcp/filesystem": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Secure file system access with configurable allowed directories",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-filesystem" },
+      "tags": ["filesystem", "files", "directories"]
+    },
+    "@mcp/github": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "GitHub API MCP server - repos, issues, PRs, actions",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-github" },
+      "tags": ["github", "git", "repos", "issues", "prs"]
+    },
+    "@mcp/postgres": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "PostgreSQL database access with read-only queries",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-postgres" },
+      "tags": ["database", "postgres", "sql"]
+    },
+    "@mcp/sqlite": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "SQLite database access and schema inspection",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-sqlite" },
+      "tags": ["database", "sqlite", "sql"]
+    },
+    "@mcp/memory": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Knowledge graph memory with entity and relation storage",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-memory" },
+      "tags": ["memory", "knowledge-graph", "entities"]
+    },
+    "@mcp/puppeteer": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Browser automation with Puppeteer",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-puppeteer" },
+      "tags": ["browser", "puppeteer", "automation"]
+    },
+    "@mcp/brave-search": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Web and local search powered by Brave Search API",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-brave-search" },
+      "tags": ["search", "web", "brave"]
+    },
+    "@mcp/google-maps": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Google Maps API for location and directions",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-google-maps" },
+      "tags": ["maps", "google", "location", "directions"]
+    },
+    "@mcp/fetch": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Fetch web content and convert to markdown",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-fetch" },
+      "tags": ["fetch", "web", "http", "markdown"]
+    },
+    "@mcp/slack": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Slack API for channels, messages, and users",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-slack" },
+      "tags": ["slack", "messaging", "chat"]
+    },
+    "@mcp/gdrive": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Google Drive for file search and access",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-gdrive" },
+      "tags": ["google", "drive", "files"]
+    },
+    "@mcp/sentry": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Sentry error tracking - issues and events",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-sentry" },
+      "tags": ["sentry", "errors", "monitoring"]
+    },
+    "@mcp/gitlab": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "GitLab API for projects and merge requests",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-gitlab" },
+      "tags": ["gitlab", "git", "merge-requests"]
+    },
+    "@mcp/git": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Local Git repository operations",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-git" },
+      "tags": ["git", "version-control", "commits"]
+    },
+    "@mcp/everart": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "AI image generation with EverArt",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-everart" },
+      "tags": ["image", "generation", "ai", "art"]
+    },
+    "@mcp/aws-kb-retrieval": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "AWS Bedrock Knowledge Base retrieval",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-aws-kb-retrieval" },
+      "tags": ["aws", "bedrock", "rag"]
+    },
+    "@mcp/sequential-thinking": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Structured reasoning with step-by-step thinking",
+      "source": { "type": "npm", "package": "@modelcontextprotocol/server-sequential-thinking" },
+      "tags": ["reasoning", "thinking", "chain-of-thought"]
+    },
+    "@mcp/neo4j": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Neo4j graph database - Cypher queries",
+      "source": { "type": "npm", "package": "@neo4j/mcp-server-neo4j" },
+      "tags": ["database", "graph", "neo4j", "cypher"]
+    },
+    "@mcp/perplexity": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Perplexity AI search with citations",
+      "source": { "type": "npm", "package": "perplexity-mcp" },
+      "tags": ["search", "ai", "perplexity", "research"]
+    },
+    "@mcp/firecrawl": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Web scraping and crawling with Firecrawl",
+      "source": { "type": "npm", "package": "firecrawl-mcp" },
+      "tags": ["scraping", "crawling", "web"]
+    },
+    "@mcp/browserbase": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Cloud browser automation with Browserbase",
+      "source": { "type": "npm", "package": "@browserbasehq/mcp-server-browserbase" },
+      "tags": ["browser", "automation", "cloud"]
+    },
+    "@mcp/cloudflare": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Cloudflare Workers, KV, R2, D1",
+      "source": { "type": "npm", "package": "@cloudflare/mcp-server-cloudflare" },
+      "tags": ["cloudflare", "workers", "kv", "edge"]
+    },
+    "@mcp/stripe": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Stripe payments API",
+      "source": { "type": "npm", "package": "@stripe/mcp-server-stripe" },
+      "tags": ["stripe", "payments", "billing"]
+    },
+    "@mcp/supabase": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Supabase database, auth, and storage",
+      "source": { "type": "npm", "package": "@supabase/mcp-server-supabase" },
+      "tags": ["supabase", "database", "auth"]
+    },
+    "@mcp/linear": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Linear issue tracking",
+      "source": { "type": "npm", "package": "@linear/mcp-server-linear" },
+      "tags": ["linear", "issues", "projects"]
+    },
+    "@mcp/notion": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Notion pages and databases",
+      "source": { "type": "npm", "package": "@notionhq/mcp-server-notion" },
+      "tags": ["notion", "pages", "databases"]
+    },
+    "@mcp/airtable": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Airtable bases and records",
+      "source": { "type": "npm", "package": "@airtable/mcp-server-airtable" },
+      "tags": ["airtable", "database", "records"]
+    },
+    "@mcp/vercel": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Vercel deployments and projects",
+      "source": { "type": "npm", "package": "@vercel/mcp-server-vercel" },
+      "tags": ["vercel", "deployments", "hosting"]
+    },
+    "@mcp/neon": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Neon serverless Postgres",
+      "source": { "type": "npm", "package": "@neondatabase/mcp-server-neon" },
+      "tags": ["neon", "postgres", "serverless"]
+    },
+    "@mcp/planetscale": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "PlanetScale MySQL database",
+      "source": { "type": "npm", "package": "@planetscale/mcp-server-planetscale" },
+      "tags": ["planetscale", "mysql", "database"]
+    },
+    "@mcp/axiom": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Axiom observability - logs and traces",
+      "source": { "type": "npm", "package": "@axiomhq/mcp-server-axiom" },
+      "tags": ["axiom", "logs", "observability"]
+    },
+    "@mcp/e2b": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "E2B code execution sandboxes",
+      "source": { "type": "npm", "package": "@e2b/mcp-server-e2b" },
+      "tags": ["e2b", "sandbox", "code-execution"]
+    },
+    "@mcp/context7": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Context7 documentation search",
+      "source": { "type": "npm", "package": "context7-mcp" },
+      "tags": ["documentation", "search", "libraries"]
+    },
+    "@mcp/exa": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Exa AI neural search",
+      "source": { "type": "npm", "package": "exa-mcp-server" },
+      "tags": ["search", "ai", "neural"]
+    },
+    "@mcp/tavily": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Tavily AI search for LLMs",
+      "source": { "type": "npm", "package": "tavily-mcp" },
+      "tags": ["search", "ai", "tavily"]
+    },
+    "@mcp/qdrant": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Qdrant vector database",
+      "source": { "type": "npm", "package": "@qdrant/mcp-server-qdrant" },
+      "tags": ["vector", "database", "qdrant", "rag"]
+    },
+    "@mcp/milvus": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Milvus vector database",
+      "source": { "type": "npm", "package": "@milvus/mcp-server-milvus" },
+      "tags": ["vector", "database", "milvus"]
+    },
+    "@mcp/pinecone": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Pinecone vector database",
+      "source": { "type": "npm", "package": "@pinecone-database/mcp-server-pinecone" },
+      "tags": ["vector", "database", "pinecone"]
+    },
+    "@mcp/weaviate": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Weaviate vector database",
+      "source": { "type": "npm", "package": "@weaviate/mcp-server-weaviate" },
+      "tags": ["vector", "database", "weaviate"]
+    },
+    "@mcp/docker": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Docker container management",
+      "source": { "type": "npm", "package": "mcp-server-docker" },
+      "tags": ["docker", "containers", "devops"]
+    },
+    "@mcp/kubernetes": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Kubernetes cluster management",
+      "source": { "type": "npm", "package": "mcp-server-kubernetes" },
+      "tags": ["kubernetes", "k8s", "containers"]
+    },
+    "@mcp/raygun": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Raygun error monitoring",
+      "source": { "type": "npm", "package": "@raygun/mcp-server-raygun" },
+      "tags": ["raygun", "errors", "monitoring"]
+    },
+    "@mcp/saucelabs": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Sauce Labs browser testing",
+      "source": { "type": "npm", "package": "@saucelabs/mcp-server-saucelabs" },
+      "tags": ["saucelabs", "testing", "browser"]
+    },
+    "@mcp/circleci": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "CircleCI pipelines",
+      "source": { "type": "npm", "package": "@circleci/mcp-server-circleci" },
+      "tags": ["circleci", "ci", "pipelines"]
+    },
+    "@mcp/grafana": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Grafana dashboards and data sources",
+      "source": { "type": "npm", "package": "@grafana/mcp-server-grafana" },
+      "tags": ["grafana", "dashboards", "monitoring"]
+    },
+    "@mcp/datadog": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Datadog monitoring and APM",
+      "source": { "type": "npm", "package": "@datadog/mcp-server-datadog" },
+      "tags": ["datadog", "monitoring", "apm"]
+    },
+    "@mcp/splunk": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "Splunk search and analytics",
+      "source": { "type": "npm", "package": "@splunk/mcp-server-splunk" },
+      "tags": ["splunk", "logs", "search"]
+    },
+    "@mcp/21st": {
+      "version": "1.0.0",
+      "type": "mcp",
+      "description": "21st.dev Magic MCP for UI generation",
+      "source": { "type": "npm", "package": "@21st-dev/magic-mcp" },
+      "tags": ["components", "ui", "generation"]
+    },
+    "@models/code/deepseek-coder": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Best open-source coding model - rivals GPT-4 for code",
+      "source": { "type": "ollama", "model": "deepseek-coder" },
+      "category": "code",
+      "tags": ["code", "python", "javascript", "rust"]
+    },
+    "@models/code/codellama": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Meta's code-specialized Llama",
+      "source": { "type": "ollama", "model": "codellama" },
+      "category": "code",
+      "tags": ["code", "llama", "completion"]
+    },
+    "@models/code/starcoder2": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "BigCode StarCoder2 - trained on The Stack v2",
+      "source": { "type": "ollama", "model": "starcoder2" },
+      "category": "code",
+      "tags": ["code", "starcoder", "completion"]
+    },
+    "@models/code/qwen2.5-coder": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Alibaba Qwen2.5-Coder - state-of-the-art code model",
+      "source": { "type": "ollama", "model": "qwen2.5-coder" },
+      "category": "code",
+      "tags": ["code", "qwen", "alibaba"]
+    },
+    "@models/code/codegemma": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Google CodeGemma for code tasks",
+      "source": { "type": "ollama", "model": "codegemma" },
+      "category": "code",
+      "tags": ["code", "gemma", "google"]
+    },
+    "@models/chat/llama3.2": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Meta's Llama 3.2 - excellent general-purpose chat",
+      "source": { "type": "ollama", "model": "llama3.2" },
+      "category": "chat",
+      "tags": ["chat", "general", "multilingual"]
+    },
+    "@models/chat/mistral": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Mistral 7B - efficient instruction-following",
+      "source": { "type": "ollama", "model": "mistral" },
+      "category": "chat",
+      "tags": ["chat", "efficient", "instruction"]
+    },
+    "@models/chat/phi3": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Microsoft Phi-3 - small but mighty",
+      "source": { "type": "ollama", "model": "phi3" },
+      "category": "chat",
+      "tags": ["chat", "small", "reasoning"]
+    },
+    "@models/chat/gemma2": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Google Gemma 2 - lightweight open-source",
+      "source": { "type": "ollama", "model": "gemma2" },
+      "category": "chat",
+      "tags": ["chat", "google", "lightweight"]
+    },
+    "@models/chat/qwen2.5": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Alibaba Qwen 2.5 - powerful multilingual",
+      "source": { "type": "ollama", "model": "qwen2.5" },
+      "category": "chat",
+      "tags": ["chat", "qwen", "multilingual"]
+    },
+    "@models/embed/nomic-embed-text": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Nomic Embed Text - high-quality embeddings for RAG",
+      "source": { "type": "ollama", "model": "nomic-embed-text" },
+      "category": "embed",
+      "tags": ["embeddings", "rag", "search"]
+    },
+    "@models/embed/mxbai-embed-large": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Mixedbread mxbai-embed-large - top-tier embeddings",
+      "source": { "type": "ollama", "model": "mxbai-embed-large" },
+      "category": "embed",
+      "tags": ["embeddings", "rag", "high-quality"]
+    },
+    "@models/embed/all-minilm": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "All-MiniLM - fast lightweight embeddings",
+      "source": { "type": "ollama", "model": "all-minilm" },
+      "category": "embed",
+      "tags": ["embeddings", "fast", "lightweight"]
+    },
+    "@models/embed/snowflake-arctic-embed": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Snowflake Arctic Embed - enterprise-grade",
+      "source": { "type": "ollama", "model": "snowflake-arctic-embed" },
+      "category": "embed",
+      "tags": ["embeddings", "enterprise", "retrieval"]
+    },
+    "@models/vision/llava": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "LLaVA - Large Language and Vision Assistant",
+      "source": { "type": "ollama", "model": "llava" },
+      "category": "vision",
+      "tags": ["vision", "multimodal", "image"]
+    },
+    "@models/vision/llava-phi3": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "LLaVA-Phi3 - efficient multimodal",
+      "source": { "type": "ollama", "model": "llava-phi3" },
+      "category": "vision",
+      "tags": ["vision", "multimodal", "efficient"]
+    },
+    "@models/vision/moondream2": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "Moondream 2 - tiny but capable vision model",
+      "source": { "type": "ollama", "model": "moondream" },
+      "category": "vision",
+      "tags": ["vision", "tiny", "efficient"]
+    },
+    "@models/reasoning/deepseek-r1": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "DeepSeek R1 - advanced reasoning with chain-of-thought",
+      "source": { "type": "ollama", "model": "deepseek-r1" },
+      "category": "reasoning",
+      "tags": ["reasoning", "chain-of-thought", "math"]
+    },
+    "@models/reasoning/qwq": {
+      "version": "1.0.0",
+      "type": "model",
+      "description": "QwQ - Alibaba's deep thinking reasoning model",
+      "source": { "type": "ollama", "model": "qwq" },
+      "category": "reasoning",
+      "tags": ["reasoning", "thinking", "analysis"]
     }
   },
   "scopes": {
@@ -397,18 +901,30 @@
       "description": "NovaNet schema extensions",
       "types": ["schema"],
       "count": 4
+    },
+    "@mcp": {
+      "description": "MCP (Model Context Protocol) servers",
+      "types": ["mcp"],
+      "count": 48
+    },
+    "@models": {
+      "description": "LLM models for local inference",
+      "types": ["model"],
+      "count": 19
     }
   },
   "stats": {
-    "total_packages": 46,
+    "total_packages": 113,
     "by_type": {
       "workflow": 18,
       "agent": 5,
       "skill": 8,
       "prompt": 6,
       "job": 5,
-      "schema": 4
+      "schema": 4,
+      "mcp": 48,
+      "model": 19
     }
   },
-  "updated": "2026-03-01T15:00:00Z"
+  "updated": "2026-03-06T12:00:00Z"
 }

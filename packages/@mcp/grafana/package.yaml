@@ -1,0 +1,38 @@
+name: "@mcp/grafana"
+version: "1.0.0"
+type: mcp
+description: "Grafana dashboards and data sources"
+author: "grafana"
+license: "AGPL-3.0"
+homepage: "https://github.com/grafana/mcp-server-grafana"
+tags: ["grafana", "dashboards", "monitoring", "visualization", "metrics"]
+
+source:
+  type: npm
+  package: "@grafana/mcp-server-grafana"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_dashboards
+      description: "List dashboards"
+    - name: get_dashboard
+      description: "Get dashboard details"
+    - name: search_dashboards
+      description: "Search dashboards"
+    - name: list_datasources
+      description: "List data sources"
+    - name: query_datasource
+      description: "Query data source"
+    - name: list_alerts
+      description: "List alert rules"
+    - name: get_alert_history
+      description: "Get alert history"
+  env_vars:
+    - name: GRAFANA_URL
+      required: true
+      description: "Grafana instance URL"
+    - name: GRAFANA_API_KEY
+      required: true
+      secret: true
+      description: "Grafana API key"

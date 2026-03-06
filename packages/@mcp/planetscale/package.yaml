@@ -1,0 +1,36 @@
+name: "@mcp/planetscale"
+version: "1.0.0"
+type: mcp
+description: "PlanetScale MySQL - databases, branches, and deploy requests"
+author: "planetscale"
+license: "MIT"
+homepage: "https://github.com/planetscale/mcp-server-planetscale"
+tags: ["planetscale", "mysql", "database", "branches", "serverless"]
+
+source:
+  type: npm
+  package: "@planetscale/mcp-server-planetscale"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_databases
+      description: "List databases"
+    - name: get_database
+      description: "Get database details"
+    - name: list_branches
+      description: "List branches"
+    - name: create_branch
+      description: "Create branch"
+    - name: create_deploy_request
+      description: "Create deploy request"
+    - name: query
+      description: "Execute SQL query"
+  env_vars:
+    - name: PLANETSCALE_TOKEN
+      required: true
+      secret: true
+      description: "PlanetScale service token"
+    - name: PLANETSCALE_ORGANIZATION
+      required: true
+      description: "Organization name"

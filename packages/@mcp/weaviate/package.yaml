@@ -1,0 +1,36 @@
+name: "@mcp/weaviate"
+version: "1.0.0"
+type: mcp
+description: "Weaviate vector database - open-source vector search with ML models"
+author: "weaviate"
+license: "BSD-3-Clause"
+homepage: "https://github.com/weaviate/mcp-server-weaviate"
+tags: ["vector", "database", "weaviate", "embeddings", "search", "ml"]
+
+source:
+  type: npm
+  package: "@weaviate/mcp-server-weaviate"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_classes
+      description: "List schema classes"
+    - name: create_class
+      description: "Create class"
+    - name: add_objects
+      description: "Add objects"
+    - name: search
+      description: "Semantic search"
+    - name: get_objects
+      description: "Get objects"
+    - name: delete_objects
+      description: "Delete objects"
+  env_vars:
+    - name: WEAVIATE_URL
+      required: true
+      description: "Weaviate instance URL"
+    - name: WEAVIATE_API_KEY
+      required: false
+      secret: true
+      description: "Weaviate API key (if cloud)"

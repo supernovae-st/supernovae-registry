@@ -1,0 +1,31 @@
+name: "@mcp/gdrive"
+version: "1.0.0"
+type: mcp
+description: "Google Drive for file search and content access"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["google", "drive", "files", "documents", "storage"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-gdrive"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: search
+      description: "Search for files"
+    - name: read_file
+      description: "Read file content"
+  resources:
+    - name: "gdrive:///<file_id>"
+      description: "Access file by ID"
+  env_vars:
+    - name: GOOGLE_CLIENT_ID
+      required: true
+      description: "Google OAuth Client ID"
+    - name: GOOGLE_CLIENT_SECRET
+      required: true
+      secret: true
+      description: "Google OAuth Client Secret"

@@ -1,0 +1,55 @@
+name: "@models/code/deepseek-coder"
+version: "1.0.0"
+type: model
+description: "Best open-source coding model - rivals GPT-4 for code tasks"
+author: "deepseek-ai"
+license: "MIT"
+homepage: "https://github.com/deepseek-ai/DeepSeek-Coder"
+tags: ["code", "python", "javascript", "rust", "completion", "review"]
+
+source:
+  type: ollama
+  model: "deepseek-coder"
+
+model:
+  category: code
+  variants:
+    - name: "6.7b"
+      ollama: "deepseek-coder:6.7b"
+      size: "4.1GB"
+      vram: "5GB"
+      quantization: "Q4_K_M"
+    - name: "33b"
+      ollama: "deepseek-coder:33b"
+      size: "19GB"
+      vram: "24GB"
+      quantization: "Q4_K_M"
+
+  benchmarks:
+    humaneval: 73.8
+    mbpp: 65.2
+
+  capabilities:
+    - code-generation
+    - code-completion
+    - code-review
+    - refactoring
+    - bug-fixing
+
+  recommended_for:
+    - "Nika infer: for code generation"
+    - "Code review workflows"
+    - "Refactoring automation"
+
+  not_recommended_for:
+    - "General chat (use llama3.2)"
+    - "Long documents (use mistral)"
+
+  languages:
+    - python
+    - javascript
+    - typescript
+    - rust
+    - go
+    - java
+    - cpp

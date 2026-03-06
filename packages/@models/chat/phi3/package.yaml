@@ -1,0 +1,50 @@
+name: "@models/chat/phi3"
+version: "1.0.0"
+type: model
+description: "Microsoft Phi-3 - small but mighty reasoning model"
+author: "microsoft"
+license: "MIT"
+homepage: "https://azure.microsoft.com/en-us/products/phi"
+tags: ["chat", "reasoning", "efficient", "small"]
+
+source:
+  type: ollama
+  model: "phi3"
+
+model:
+  category: chat
+  variants:
+    - name: "mini"
+      ollama: "phi3:mini"
+      size: "2.3GB"
+      vram: "3GB"
+      best_for: "Edge deployment, mobile"
+    - name: "small"
+      ollama: "phi3:small"
+      size: "4.5GB"
+      vram: "6GB"
+      best_for: "Balanced performance"
+    - name: "medium"
+      ollama: "phi3:medium"
+      size: "8.4GB"
+      vram: "10GB"
+      best_for: "Complex reasoning"
+
+  benchmarks:
+    mmlu: 69.0
+    hellaswag: 76.0
+    arc: 72.0
+
+  capabilities:
+    - chat
+    - reasoning
+    - math
+    - coding
+
+  recommended_for:
+    - "Mathematical reasoning"
+    - "Resource-constrained environments"
+    - "Edge deployment"
+
+  languages:
+    - en

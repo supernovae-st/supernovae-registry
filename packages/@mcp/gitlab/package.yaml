@@ -1,0 +1,41 @@
+name: "@mcp/gitlab"
+version: "1.0.0"
+type: mcp
+description: "GitLab API for projects, merge requests, issues, and pipelines"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["gitlab", "git", "repos", "merge-requests", "pipelines", "ci"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-gitlab"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: list_projects
+      description: "List GitLab projects"
+    - name: get_project
+      description: "Get project details"
+    - name: list_merge_requests
+      description: "List merge requests"
+    - name: get_merge_request
+      description: "Get MR details"
+    - name: list_issues
+      description: "List project issues"
+    - name: get_issue
+      description: "Get issue details"
+    - name: list_pipelines
+      description: "List project pipelines"
+    - name: get_pipeline
+      description: "Get pipeline details"
+  env_vars:
+    - name: GITLAB_TOKEN
+      required: true
+      secret: true
+      description: "GitLab Personal Access Token"
+    - name: GITLAB_URL
+      required: false
+      default: "https://gitlab.com"
+      description: "GitLab instance URL"

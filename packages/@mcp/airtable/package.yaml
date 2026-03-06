@@ -1,0 +1,37 @@
+name: "@mcp/airtable"
+version: "1.0.0"
+type: mcp
+description: "Airtable bases, tables, and records"
+author: "airtable"
+license: "MIT"
+homepage: "https://github.com/airtable/mcp-server-airtable"
+tags: ["airtable", "database", "spreadsheet", "records", "bases"]
+
+source:
+  type: npm
+  package: "@airtable/mcp-server-airtable"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_bases
+      description: "List bases"
+    - name: list_tables
+      description: "List tables in base"
+    - name: list_records
+      description: "List records"
+    - name: get_record
+      description: "Get record"
+    - name: create_record
+      description: "Create record"
+    - name: update_record
+      description: "Update record"
+    - name: delete_record
+      description: "Delete record"
+    - name: search_records
+      description: "Search records"
+  env_vars:
+    - name: AIRTABLE_API_KEY
+      required: true
+      secret: true
+      description: "Airtable Personal Access Token"

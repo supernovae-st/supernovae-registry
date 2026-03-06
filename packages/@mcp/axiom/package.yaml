@@ -1,0 +1,32 @@
+name: "@mcp/axiom"
+version: "1.0.0"
+type: mcp
+description: "Axiom observability - logs, traces, and analytics"
+author: "axiom"
+license: "MIT"
+homepage: "https://github.com/axiomhq/mcp-server-axiom"
+tags: ["axiom", "logs", "observability", "analytics", "traces"]
+
+source:
+  type: npm
+  package: "@axiomhq/mcp-server-axiom"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: query
+      description: "Query logs and events"
+    - name: list_datasets
+      description: "List datasets"
+    - name: ingest
+      description: "Ingest events"
+    - name: create_annotation
+      description: "Create annotation"
+  env_vars:
+    - name: AXIOM_TOKEN
+      required: true
+      secret: true
+      description: "Axiom API token"
+    - name: AXIOM_ORG_ID
+      required: false
+      description: "Organization ID"

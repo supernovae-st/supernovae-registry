@@ -1,0 +1,34 @@
+name: "@mcp/docker"
+version: "1.0.0"
+type: mcp
+description: "Docker container management - images, containers, and compose"
+author: "community"
+license: "MIT"
+homepage: "https://github.com/docker/mcp-server-docker"
+tags: ["docker", "containers", "devops", "images", "compose"]
+
+source:
+  type: npm
+  package: "mcp-server-docker"
+  version: "^1.0.0"
+
+mcp:
+  tools:
+    - name: list_containers
+      description: "List containers"
+    - name: start_container
+      description: "Start container"
+    - name: stop_container
+      description: "Stop container"
+    - name: create_container
+      description: "Create container"
+    - name: remove_container
+      description: "Remove container"
+    - name: list_images
+      description: "List images"
+    - name: pull_image
+      description: "Pull image"
+    - name: exec_command
+      description: "Execute command in container"
+    - name: get_logs
+      description: "Get container logs"

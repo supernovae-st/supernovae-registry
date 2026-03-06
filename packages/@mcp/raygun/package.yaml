@@ -1,0 +1,31 @@
+name: "@mcp/raygun"
+version: "1.0.0"
+type: mcp
+description: "Raygun error and performance monitoring"
+author: "raygun"
+license: "MIT"
+homepage: "https://github.com/raygun/mcp-server-raygun"
+tags: ["raygun", "errors", "monitoring", "apm", "debugging"]
+
+source:
+  type: npm
+  package: "@raygun/mcp-server-raygun"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_errors
+      description: "List error groups"
+    - name: get_error
+      description: "Get error details"
+    - name: list_deployments
+      description: "List deployments"
+    - name: get_crash_reporting
+      description: "Get crash reporting data"
+    - name: get_real_user_monitoring
+      description: "Get RUM data"
+  env_vars:
+    - name: RAYGUN_API_KEY
+      required: true
+      secret: true
+      description: "Raygun API key"

@@ -1,0 +1,64 @@
+name: "@models/chat/qwen2.5"
+version: "1.0.0"
+type: model
+description: "Alibaba Qwen 2.5 - powerful multilingual chat model"
+author: "alibaba"
+license: "Apache-2.0"
+homepage: "https://github.com/QwenLM/Qwen2.5"
+tags: ["chat", "qwen", "alibaba", "multilingual", "reasoning"]
+
+source:
+  type: ollama
+  model: "qwen2.5"
+
+model:
+  category: chat
+  variants:
+    - name: "7b"
+      ollama: "qwen2.5:7b"
+      size: "4.7GB"
+      vram: "6GB"
+      best_for: "Fast multilingual tasks"
+    - name: "14b"
+      ollama: "qwen2.5:14b"
+      size: "9.0GB"
+      vram: "12GB"
+      best_for: "Balanced performance"
+    - name: "32b"
+      ollama: "qwen2.5:32b"
+      size: "20GB"
+      vram: "26GB"
+      best_for: "Maximum quality"
+    - name: "72b"
+      ollama: "qwen2.5:72b"
+      size: "47GB"
+      vram: "55GB"
+      best_for: "Best-in-class performance"
+
+  benchmarks:
+    mmlu: 79.2
+    hellaswag: 85.4
+    arc: 82.0
+
+  capabilities:
+    - chat
+    - reasoning
+    - multilingual
+    - long-context
+    - math
+
+  recommended_for:
+    - "Complex reasoning"
+    - "Multilingual tasks"
+    - "Long document processing"
+
+  languages:
+    - en
+    - zh
+    - ja
+    - ko
+    - fr
+    - de
+    - es
+    - ar
+    - ru

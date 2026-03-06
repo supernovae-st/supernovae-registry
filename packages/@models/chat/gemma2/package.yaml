@@ -1,0 +1,50 @@
+name: "@models/chat/gemma2"
+version: "1.0.0"
+type: model
+description: "Google Gemma 2 - lightweight, open-source model from Google"
+author: "google"
+license: "Gemma License"
+homepage: "https://ai.google.dev/gemma"
+tags: ["chat", "google", "efficient", "lightweight"]
+
+source:
+  type: ollama
+  model: "gemma2"
+
+model:
+  category: chat
+  variants:
+    - name: "2b"
+      ollama: "gemma2:2b"
+      size: "1.6GB"
+      vram: "2GB"
+      best_for: "Ultra-lightweight tasks"
+    - name: "9b"
+      ollama: "gemma2:9b"
+      size: "5.4GB"
+      vram: "7GB"
+      best_for: "Balanced performance"
+    - name: "27b"
+      ollama: "gemma2:27b"
+      size: "16GB"
+      vram: "20GB"
+      best_for: "High-quality output"
+
+  benchmarks:
+    mmlu: 71.3
+    hellaswag: 80.5
+    arc: 75.2
+
+  capabilities:
+    - chat
+    - reasoning
+    - summarization
+    - qa
+
+  recommended_for:
+    - "Lightweight deployment"
+    - "Q&A tasks"
+    - "Summarization"
+
+  languages:
+    - en

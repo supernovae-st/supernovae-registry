@@ -1,0 +1,34 @@
+name: "@mcp/memory"
+version: "1.0.0"
+type: mcp
+description: "Knowledge graph memory with persistent entity and relation storage"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["memory", "knowledge-graph", "entities", "relations", "persistent"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-memory"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: create_entities
+      description: "Create multiple entities"
+    - name: create_relations
+      description: "Create relations between entities"
+    - name: add_observations
+      description: "Add observations to entities"
+    - name: delete_entities
+      description: "Delete entities"
+    - name: delete_observations
+      description: "Delete observations"
+    - name: delete_relations
+      description: "Delete relations"
+    - name: read_graph
+      description: "Read entire knowledge graph"
+    - name: search_nodes
+      description: "Search nodes by query"
+    - name: open_nodes
+      description: "Open specific nodes"

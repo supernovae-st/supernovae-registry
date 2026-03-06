@@ -1,0 +1,39 @@
+name: "@models/embed/nomic-embed-text"
+version: "1.0.0"
+type: model
+description: "Nomic Embed Text - high-quality text embeddings for RAG"
+author: "nomic"
+license: "Apache-2.0"
+homepage: "https://huggingface.co/nomic-ai/nomic-embed-text-v1.5"
+tags: ["embeddings", "rag", "search", "semantic", "retrieval"]
+
+source:
+  type: ollama
+  model: "nomic-embed-text"
+
+model:
+  category: embed
+  variants:
+    - name: "default"
+      ollama: "nomic-embed-text"
+      size: "274MB"
+      vram: "512MB"
+      dimensions: 768
+      best_for: "General-purpose embeddings"
+
+  benchmarks:
+    mteb_avg: 62.4
+
+  capabilities:
+    - text-embeddings
+    - semantic-search
+    - clustering
+    - classification
+
+  recommended_for:
+    - "RAG applications"
+    - "Semantic search"
+    - "Document similarity"
+    - "Text clustering"
+
+  context_length: 8192

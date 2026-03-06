@@ -1,0 +1,47 @@
+name: "@models/vision/llava"
+version: "1.0.0"
+type: model
+description: "LLaVA - Large Language and Vision Assistant for image understanding"
+author: "llava-team"
+license: "Apache-2.0"
+homepage: "https://llava-vl.github.io"
+tags: ["vision", "multimodal", "image", "understanding"]
+
+source:
+  type: ollama
+  model: "llava"
+
+model:
+  category: vision
+  variants:
+    - name: "7b"
+      ollama: "llava:7b"
+      size: "4.7GB"
+      vram: "6GB"
+      best_for: "Fast image analysis"
+    - name: "13b"
+      ollama: "llava:13b"
+      size: "8.0GB"
+      vram: "10GB"
+      best_for: "Detailed image understanding"
+    - name: "34b"
+      ollama: "llava:34b"
+      size: "20GB"
+      vram: "26GB"
+      best_for: "Best vision quality"
+
+  capabilities:
+    - image-understanding
+    - visual-qa
+    - image-description
+    - ocr
+
+  recommended_for:
+    - "Image analysis"
+    - "Visual question answering"
+    - "Document understanding"
+    - "Screenshot analysis"
+
+  input_types:
+    - text
+    - image

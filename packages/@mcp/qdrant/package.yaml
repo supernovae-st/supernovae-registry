@@ -1,0 +1,36 @@
+name: "@mcp/qdrant"
+version: "1.0.0"
+type: mcp
+description: "Qdrant vector database - semantic search and embeddings storage"
+author: "qdrant"
+license: "Apache-2.0"
+homepage: "https://github.com/qdrant/mcp-server-qdrant"
+tags: ["vector", "database", "qdrant", "embeddings", "semantic-search", "rag"]
+
+source:
+  type: npm
+  package: "@qdrant/mcp-server-qdrant"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_collections
+      description: "List collections"
+    - name: create_collection
+      description: "Create collection"
+    - name: upsert_points
+      description: "Upsert points"
+    - name: search
+      description: "Semantic search"
+    - name: get_points
+      description: "Get points by IDs"
+    - name: delete_points
+      description: "Delete points"
+  env_vars:
+    - name: QDRANT_URL
+      required: true
+      description: "Qdrant instance URL"
+    - name: QDRANT_API_KEY
+      required: false
+      secret: true
+      description: "Qdrant API key (if cloud)"

@@ -1,0 +1,57 @@
+name: "@models/code/qwen2.5-coder"
+version: "1.0.0"
+type: model
+description: "Alibaba Qwen2.5-Coder - state-of-the-art open-source code model"
+author: "alibaba"
+license: "Apache-2.0"
+homepage: "https://github.com/QwenLM/Qwen2.5-Coder"
+tags: ["code", "qwen", "alibaba", "completion", "generation"]
+
+source:
+  type: ollama
+  model: "qwen2.5-coder"
+
+model:
+  category: code
+  variants:
+    - name: "7b"
+      ollama: "qwen2.5-coder:7b"
+      size: "4.7GB"
+      vram: "6GB"
+      best_for: "Fast coding tasks"
+    - name: "14b"
+      ollama: "qwen2.5-coder:14b"
+      size: "9.0GB"
+      vram: "12GB"
+      best_for: "Balanced performance"
+    - name: "32b"
+      ollama: "qwen2.5-coder:32b"
+      size: "20GB"
+      vram: "26GB"
+      best_for: "Maximum code quality"
+
+  benchmarks:
+    humaneval: 75.2
+    mbpp: 68.4
+
+  capabilities:
+    - code-generation
+    - code-completion
+    - code-review
+    - debugging
+    - explanation
+
+  recommended_for:
+    - "Complex code generation"
+    - "Code explanation"
+    - "Multi-language support"
+
+  languages:
+    - python
+    - javascript
+    - typescript
+    - rust
+    - go
+    - java
+    - cpp
+    - sql

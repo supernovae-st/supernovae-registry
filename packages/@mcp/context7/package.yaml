@@ -1,0 +1,20 @@
+name: "@mcp/context7"
+version: "1.0.0"
+type: mcp
+description: "Context7 documentation search - up-to-date library docs and examples"
+author: "context7"
+license: "MIT"
+homepage: "https://github.com/context7/context7-mcp"
+tags: ["documentation", "search", "libraries", "code-examples", "reference"]
+
+source:
+  type: npm
+  package: "context7-mcp"
+  version: "^1.0.0"
+
+mcp:
+  tools:
+    - name: resolve-library-id
+      description: "Resolve library name to Context7 ID"
+    - name: query-docs
+      description: "Query documentation for a library"

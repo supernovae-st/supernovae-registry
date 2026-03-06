@@ -1,0 +1,37 @@
+name: "@mcp/vercel"
+version: "1.0.0"
+type: mcp
+description: "Vercel deployments, projects, and edge config"
+author: "vercel"
+license: "MIT"
+homepage: "https://github.com/vercel/mcp-server-vercel"
+tags: ["vercel", "deployments", "hosting", "serverless", "edge"]
+
+source:
+  type: npm
+  package: "@vercel/mcp-server-vercel"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_projects
+      description: "List projects"
+    - name: get_project
+      description: "Get project details"
+    - name: list_deployments
+      description: "List deployments"
+    - name: get_deployment
+      description: "Get deployment details"
+    - name: create_deployment
+      description: "Create deployment"
+    - name: list_domains
+      description: "List domains"
+    - name: get_edge_config
+      description: "Get edge config"
+    - name: update_edge_config
+      description: "Update edge config"
+  env_vars:
+    - name: VERCEL_TOKEN
+      required: true
+      secret: true
+      description: "Vercel access token"

@@ -1,0 +1,27 @@
+name: "@mcp/21st"
+version: "1.0.0"
+type: mcp
+description: "21st.dev Magic MCP - AI-powered component generation"
+author: "21st-dev"
+license: "MIT"
+homepage: "https://github.com/21st-dev/magic-mcp"
+tags: ["components", "ui", "generation", "ai", "design"]
+
+source:
+  type: npm
+  package: "@21st-dev/magic-mcp"
+  version: "^1.0.0"
+
+mcp:
+  tools:
+    - name: generate_component
+      description: "Generate UI component from description"
+    - name: list_components
+      description: "List available component templates"
+    - name: customize_component
+      description: "Customize generated component"
+  env_vars:
+    - name: MAGIC_API_KEY
+      required: true
+      secret: true
+      description: "21st.dev API key"

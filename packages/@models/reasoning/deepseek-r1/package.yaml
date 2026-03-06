@@ -1,0 +1,54 @@
+name: "@models/reasoning/deepseek-r1"
+version: "1.0.0"
+type: model
+description: "DeepSeek R1 - advanced reasoning model with chain-of-thought"
+author: "deepseek-ai"
+license: "DeepSeek License"
+homepage: "https://github.com/deepseek-ai/DeepSeek-R1"
+tags: ["reasoning", "chain-of-thought", "math", "logic"]
+
+source:
+  type: ollama
+  model: "deepseek-r1"
+
+model:
+  category: reasoning
+  variants:
+    - name: "7b"
+      ollama: "deepseek-r1:7b"
+      size: "4.7GB"
+      vram: "6GB"
+      best_for: "Fast reasoning"
+    - name: "32b"
+      ollama: "deepseek-r1:32b"
+      size: "20GB"
+      vram: "26GB"
+      best_for: "Complex reasoning"
+    - name: "70b"
+      ollama: "deepseek-r1:70b"
+      size: "43GB"
+      vram: "50GB"
+      best_for: "Maximum reasoning capability"
+
+  benchmarks:
+    math: 92.3
+    aime: 79.8
+    codeforces: 2029
+
+  capabilities:
+    - chain-of-thought
+    - mathematical-reasoning
+    - logical-reasoning
+    - problem-solving
+    - step-by-step-explanation
+
+  recommended_for:
+    - "Complex math problems"
+    - "Multi-step reasoning"
+    - "Logical puzzles"
+    - "Competitive programming"
+
+  features:
+    - "Shows reasoning process"
+    - "Self-correction"
+    - "Step-by-step breakdown"

@@ -1,0 +1,25 @@
+name: "@mcp/brave-search"
+version: "1.0.0"
+type: mcp
+description: "Web and local search powered by Brave Search API"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["search", "web", "brave", "news", "images"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-brave-search"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: brave_web_search
+      description: "Search the web with Brave"
+    - name: brave_local_search
+      description: "Search local businesses"
+  env_vars:
+    - name: BRAVE_API_KEY
+      required: true
+      secret: true
+      description: "Brave Search API key"

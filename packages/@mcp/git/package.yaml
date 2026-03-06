@@ -1,0 +1,40 @@
+name: "@mcp/git"
+version: "1.0.0"
+type: mcp
+description: "Local Git repository operations - status, diff, log, and commits"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["git", "version-control", "commits", "diff", "branches"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-git"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: git_status
+      description: "Get repository status"
+    - name: git_diff_staged
+      description: "Get staged changes diff"
+    - name: git_diff_unstaged
+      description: "Get unstaged changes diff"
+    - name: git_commit
+      description: "Create a commit"
+    - name: git_add
+      description: "Stage files"
+    - name: git_reset
+      description: "Unstage files"
+    - name: git_log
+      description: "Get commit history"
+    - name: git_create_branch
+      description: "Create a branch"
+    - name: git_checkout
+      description: "Switch branches"
+    - name: git_show
+      description: "Show commit details"
+  args:
+    - name: repository_path
+      required: true
+      description: "Path to git repository"

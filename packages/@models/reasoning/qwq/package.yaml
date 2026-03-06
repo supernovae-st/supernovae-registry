@@ -1,0 +1,42 @@
+name: "@models/reasoning/qwq"
+version: "1.0.0"
+type: model
+description: "QwQ - Alibaba's reasoning model with deep thinking capabilities"
+author: "alibaba"
+license: "Apache-2.0"
+homepage: "https://github.com/QwenLM/Qwen2.5"
+tags: ["reasoning", "thinking", "math", "analysis"]
+
+source:
+  type: ollama
+  model: "qwq"
+
+model:
+  category: reasoning
+  variants:
+    - name: "32b"
+      ollama: "qwq:32b"
+      size: "20GB"
+      vram: "26GB"
+      best_for: "Deep reasoning tasks"
+
+  benchmarks:
+    math: 88.5
+    gpqa: 65.2
+
+  capabilities:
+    - deep-thinking
+    - mathematical-reasoning
+    - analytical-reasoning
+    - problem-decomposition
+
+  recommended_for:
+    - "Complex analysis"
+    - "Mathematical proofs"
+    - "Strategic planning"
+    - "Research questions"
+
+  features:
+    - "Extended thinking time"
+    - "Self-reflection"
+    - "Multi-perspective analysis"

@@ -1,0 +1,35 @@
+name: "@mcp/circleci"
+version: "1.0.0"
+type: mcp
+description: "CircleCI pipelines and workflows"
+author: "circleci"
+license: "MIT"
+homepage: "https://github.com/circleci/mcp-server-circleci"
+tags: ["circleci", "ci", "pipelines", "workflows", "automation"]
+
+source:
+  type: npm
+  package: "@circleci/mcp-server-circleci"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_pipelines
+      description: "List pipelines"
+    - name: get_pipeline
+      description: "Get pipeline details"
+    - name: list_workflows
+      description: "List workflows"
+    - name: get_workflow
+      description: "Get workflow details"
+    - name: list_jobs
+      description: "List jobs in workflow"
+    - name: trigger_pipeline
+      description: "Trigger new pipeline"
+    - name: cancel_workflow
+      description: "Cancel workflow"
+  env_vars:
+    - name: CIRCLECI_TOKEN
+      required: true
+      secret: true
+      description: "CircleCI personal API token"

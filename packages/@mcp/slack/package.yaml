@@ -1,0 +1,42 @@
+name: "@mcp/slack"
+version: "1.0.0"
+type: mcp
+description: "Slack API for channels, messages, users, and reactions"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["slack", "messaging", "chat", "channels", "teams"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-slack"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: slack_list_channels
+      description: "List available channels"
+    - name: slack_post_message
+      description: "Post a message to channel"
+    - name: slack_reply_to_thread
+      description: "Reply to a thread"
+    - name: slack_add_reaction
+      description: "Add reaction to message"
+    - name: slack_get_channel_history
+      description: "Get channel message history"
+    - name: slack_get_thread_replies
+      description: "Get thread replies"
+    - name: slack_search_messages
+      description: "Search messages"
+    - name: slack_get_users
+      description: "Get workspace users"
+    - name: slack_get_user_profile
+      description: "Get user profile"
+  env_vars:
+    - name: SLACK_BOT_TOKEN
+      required: true
+      secret: true
+      description: "Slack Bot OAuth token"
+    - name: SLACK_TEAM_ID
+      required: true
+      description: "Slack Team/Workspace ID"

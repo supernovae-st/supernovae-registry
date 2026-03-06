@@ -1,0 +1,37 @@
+name: "@models/embed/snowflake-arctic-embed"
+version: "1.0.0"
+type: model
+description: "Snowflake Arctic Embed - enterprise-grade text embeddings"
+author: "snowflake"
+license: "Apache-2.0"
+homepage: "https://huggingface.co/Snowflake/snowflake-arctic-embed-l"
+tags: ["embeddings", "enterprise", "rag", "retrieval"]
+
+source:
+  type: ollama
+  model: "snowflake-arctic-embed"
+
+model:
+  category: embed
+  variants:
+    - name: "default"
+      ollama: "snowflake-arctic-embed"
+      size: "670MB"
+      vram: "1GB"
+      dimensions: 1024
+      best_for: "Enterprise retrieval"
+
+  benchmarks:
+    mteb_avg: 66.2
+
+  capabilities:
+    - text-embeddings
+    - semantic-search
+    - retrieval
+
+  recommended_for:
+    - "Enterprise RAG"
+    - "High-stakes retrieval"
+    - "Production systems"
+
+  context_length: 512

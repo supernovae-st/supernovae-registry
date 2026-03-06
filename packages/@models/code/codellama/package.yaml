@@ -1,0 +1,53 @@
+name: "@models/code/codellama"
+version: "1.0.0"
+type: model
+description: "Meta's code-specialized Llama - optimized for code generation"
+author: "meta"
+license: "Llama 2 Community License"
+homepage: "https://ai.meta.com/llama/"
+tags: ["code", "llama", "python", "completion", "infilling"]
+
+source:
+  type: ollama
+  model: "codellama"
+
+model:
+  category: code
+  variants:
+    - name: "7b"
+      ollama: "codellama:7b"
+      size: "3.8GB"
+      vram: "5GB"
+      best_for: "Fast code completion"
+    - name: "13b"
+      ollama: "codellama:13b"
+      size: "7.3GB"
+      vram: "10GB"
+      best_for: "Balanced quality/speed"
+    - name: "34b"
+      ollama: "codellama:34b"
+      size: "19GB"
+      vram: "24GB"
+      best_for: "Best code quality"
+
+  benchmarks:
+    humaneval: 53.7
+    mbpp: 56.2
+
+  capabilities:
+    - code-generation
+    - code-completion
+    - code-infilling
+    - instruction-following
+
+  recommended_for:
+    - "Code completion"
+    - "Infilling (fill in the middle)"
+    - "Python development"
+
+  languages:
+    - python
+    - javascript
+    - typescript
+    - java
+    - cpp

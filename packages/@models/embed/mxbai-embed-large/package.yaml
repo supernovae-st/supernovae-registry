@@ -1,0 +1,37 @@
+name: "@models/embed/mxbai-embed-large"
+version: "1.0.0"
+type: model
+description: "Mixedbread mxbai-embed-large - top-tier embedding model"
+author: "mixedbread"
+license: "Apache-2.0"
+homepage: "https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1"
+tags: ["embeddings", "rag", "search", "high-quality"]
+
+source:
+  type: ollama
+  model: "mxbai-embed-large"
+
+model:
+  category: embed
+  variants:
+    - name: "default"
+      ollama: "mxbai-embed-large"
+      size: "670MB"
+      vram: "1GB"
+      dimensions: 1024
+      best_for: "High-quality embeddings"
+
+  benchmarks:
+    mteb_avg: 64.7
+
+  capabilities:
+    - text-embeddings
+    - semantic-search
+    - clustering
+
+  recommended_for:
+    - "High-accuracy RAG"
+    - "Production search systems"
+    - "Similarity matching"
+
+  context_length: 512

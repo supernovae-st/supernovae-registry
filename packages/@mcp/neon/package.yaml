@@ -1,0 +1,35 @@
+name: "@mcp/neon"
+version: "1.0.0"
+type: mcp
+description: "Neon serverless Postgres - branches, queries, and management"
+author: "neon"
+license: "MIT"
+homepage: "https://github.com/neondatabase/mcp-server-neon"
+tags: ["neon", "postgres", "database", "serverless", "branches"]
+
+source:
+  type: npm
+  package: "@neondatabase/mcp-server-neon"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_projects
+      description: "List Neon projects"
+    - name: get_project
+      description: "Get project details"
+    - name: list_branches
+      description: "List branches"
+    - name: create_branch
+      description: "Create database branch"
+    - name: delete_branch
+      description: "Delete branch"
+    - name: query
+      description: "Execute SQL query"
+    - name: get_connection_string
+      description: "Get connection string"
+  env_vars:
+    - name: NEON_API_KEY
+      required: true
+      secret: true
+      description: "Neon API key"

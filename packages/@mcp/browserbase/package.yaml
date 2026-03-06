@@ -1,0 +1,38 @@
+name: "@mcp/browserbase"
+version: "1.0.0"
+type: mcp
+description: "Cloud browser automation with Browserbase - headless Chrome at scale"
+author: "browserbase"
+license: "MIT"
+homepage: "https://github.com/browserbasehq/mcp-server-browserbase"
+tags: ["browser", "automation", "headless", "chrome", "cloud"]
+
+source:
+  type: npm
+  package: "@browserbasehq/mcp-server-browserbase"
+  version: "^1.0.0"
+
+mcp:
+  tools:
+    - name: browserbase_create_session
+      description: "Create browser session"
+    - name: browserbase_navigate
+      description: "Navigate to URL"
+    - name: browserbase_screenshot
+      description: "Take screenshot"
+    - name: browserbase_click
+      description: "Click element"
+    - name: browserbase_type
+      description: "Type text"
+    - name: browserbase_get_content
+      description: "Get page content"
+    - name: browserbase_close_session
+      description: "Close session"
+  env_vars:
+    - name: BROWSERBASE_API_KEY
+      required: true
+      secret: true
+      description: "Browserbase API key"
+    - name: BROWSERBASE_PROJECT_ID
+      required: true
+      description: "Browserbase project ID"

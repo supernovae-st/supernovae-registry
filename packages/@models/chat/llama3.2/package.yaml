@@ -1,0 +1,65 @@
+name: "@models/chat/llama3.2"
+version: "1.0.0"
+type: model
+description: "Meta's Llama 3.2 - excellent general-purpose chat model"
+author: "meta"
+license: "Llama 3.2 Community License"
+homepage: "https://ai.meta.com/llama/"
+tags: ["chat", "general", "reasoning", "multilingual"]
+
+source:
+  type: ollama
+  model: "llama3.2"
+
+model:
+  category: chat
+  variants:
+    - name: "1b"
+      ollama: "llama3.2:1b"
+      size: "1.3GB"
+      vram: "2GB"
+      best_for: "Quick responses, edge devices"
+    - name: "3b"
+      ollama: "llama3.2:3b"
+      size: "2.0GB"
+      vram: "3GB"
+      best_for: "Balanced speed/quality"
+    - name: "8b"
+      ollama: "llama3.2"
+      size: "4.7GB"
+      vram: "6GB"
+      best_for: "Best quality for most tasks"
+    - name: "70b"
+      ollama: "llama3.2:70b"
+      size: "40GB"
+      vram: "48GB"
+      best_for: "Maximum capability"
+
+  benchmarks:
+    mmlu: 73.0
+    hellaswag: 85.0
+    arc: 78.0
+
+  capabilities:
+    - chat
+    - reasoning
+    - summarization
+    - translation
+    - creative-writing
+
+  recommended_for:
+    - "General conversation"
+    - "Text summarization"
+    - "Creative writing"
+    - "Multilingual tasks"
+
+  languages:
+    - en
+    - es
+    - fr
+    - de
+    - it
+    - pt
+    - zh
+    - ja
+    - ko

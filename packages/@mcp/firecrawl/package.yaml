@@ -1,0 +1,33 @@
+name: "@mcp/firecrawl"
+version: "1.0.0"
+type: mcp
+description: "Web scraping and crawling with Firecrawl - extract, map, and search"
+author: "firecrawl"
+license: "MIT"
+homepage: "https://github.com/firecrawl/firecrawl-mcp"
+tags: ["scraping", "crawling", "web", "extract", "firecrawl"]
+
+source:
+  type: npm
+  package: "firecrawl-mcp"
+  version: "^1.0.0"
+
+mcp:
+  tools:
+    - name: firecrawl_scrape
+      description: "Scrape single URL to markdown"
+    - name: firecrawl_crawl
+      description: "Crawl website pages"
+    - name: firecrawl_map
+      description: "Map all URLs on a site"
+    - name: firecrawl_search
+      description: "Search web with Firecrawl"
+    - name: firecrawl_extract
+      description: "Extract structured data"
+    - name: firecrawl_agent
+      description: "Autonomous research agent"
+  env_vars:
+    - name: FIRECRAWL_API_KEY
+      required: true
+      secret: true
+      description: "Firecrawl API key"

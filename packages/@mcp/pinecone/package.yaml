@@ -1,0 +1,35 @@
+name: "@mcp/pinecone"
+version: "1.0.0"
+type: mcp
+description: "Pinecone vector database - managed vector search at scale"
+author: "pinecone"
+license: "Apache-2.0"
+homepage: "https://github.com/pinecone-database/mcp-server-pinecone"
+tags: ["vector", "database", "pinecone", "embeddings", "search", "rag"]
+
+source:
+  type: npm
+  package: "@pinecone-database/mcp-server-pinecone"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_indexes
+      description: "List indexes"
+    - name: create_index
+      description: "Create index"
+    - name: upsert
+      description: "Upsert vectors"
+    - name: query
+      description: "Query vectors"
+    - name: fetch
+      description: "Fetch vectors by ID"
+    - name: delete
+      description: "Delete vectors"
+    - name: describe_index_stats
+      description: "Get index statistics"
+  env_vars:
+    - name: PINECONE_API_KEY
+      required: true
+      secret: true
+      description: "Pinecone API key"

@@ -1,0 +1,34 @@
+name: "@mcp/saucelabs"
+version: "1.0.0"
+type: mcp
+description: "Sauce Labs testing - cross-browser and mobile testing"
+author: "saucelabs"
+license: "MIT"
+homepage: "https://github.com/saucelabs/mcp-server-saucelabs"
+tags: ["saucelabs", "testing", "browser", "mobile", "automation"]
+
+source:
+  type: npm
+  package: "@saucelabs/mcp-server-saucelabs"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_jobs
+      description: "List test jobs"
+    - name: get_job
+      description: "Get job details"
+    - name: list_devices
+      description: "List available devices"
+    - name: list_browsers
+      description: "List available browsers"
+    - name: get_job_assets
+      description: "Get job screenshots and videos"
+  env_vars:
+    - name: SAUCE_USERNAME
+      required: true
+      description: "Sauce Labs username"
+    - name: SAUCE_ACCESS_KEY
+      required: true
+      secret: true
+      description: "Sauce Labs access key"

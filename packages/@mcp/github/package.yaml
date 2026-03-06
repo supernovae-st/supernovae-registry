@@ -1,0 +1,63 @@
+name: "@mcp/github"
+version: "1.0.0"
+type: mcp
+description: "GitHub API MCP server - repos, issues, PRs, actions, and more"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["github", "git", "repos", "issues", "prs", "actions", "code"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-github"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: search_repositories
+      description: "Search GitHub repositories"
+    - name: get_file_contents
+      description: "Get contents of a file"
+    - name: create_or_update_file
+      description: "Create or update a file"
+    - name: push_files
+      description: "Push multiple files in a commit"
+    - name: create_issue
+      description: "Create a new issue"
+    - name: create_pull_request
+      description: "Create a pull request"
+    - name: fork_repository
+      description: "Fork a repository"
+    - name: create_branch
+      description: "Create a new branch"
+    - name: list_commits
+      description: "List commits in a branch"
+    - name: list_issues
+      description: "List repository issues"
+    - name: update_issue
+      description: "Update an issue"
+    - name: add_issue_comment
+      description: "Add comment to an issue"
+    - name: search_code
+      description: "Search code across repositories"
+    - name: search_issues
+      description: "Search issues"
+    - name: search_users
+      description: "Search GitHub users"
+    - name: get_issue
+      description: "Get issue details"
+    - name: get_pull_request
+      description: "Get PR details"
+    - name: list_pull_requests
+      description: "List repository PRs"
+    - name: create_repository
+      description: "Create a new repository"
+    - name: get_code_scanning_alerts
+      description: "Get security alerts"
+    - name: get_secret_scanning_alerts
+      description: "Get secret scanning alerts"
+  env_vars:
+    - name: GITHUB_TOKEN
+      required: true
+      secret: true
+      description: "Personal access token with repo scope"

@@ -1,0 +1,27 @@
+name: "@mcp/postgres"
+version: "1.0.0"
+type: mcp
+description: "PostgreSQL database access with read-only queries and schema inspection"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["database", "postgres", "postgresql", "sql", "query"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-postgres"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: query
+      description: "Execute read-only SQL query"
+  resources:
+    - name: "postgres://schema"
+      description: "Database schema information"
+  env_vars:
+    - name: POSTGRES_URL
+      required: true
+      secret: true
+      description: "PostgreSQL connection string"
+      example: "postgresql://user:pass@localhost:5432/mydb"

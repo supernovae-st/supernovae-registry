@@ -1,0 +1,43 @@
+name: "@mcp/datadog"
+version: "1.0.0"
+type: mcp
+description: "Datadog monitoring - metrics, logs, traces, and alerts"
+author: "datadog"
+license: "Apache-2.0"
+homepage: "https://github.com/datadog/mcp-server-datadog"
+tags: ["datadog", "monitoring", "metrics", "logs", "traces", "apm"]
+
+source:
+  type: npm
+  package: "@datadog/mcp-server-datadog"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: query_metrics
+      description: "Query metrics"
+    - name: search_logs
+      description: "Search logs"
+    - name: list_monitors
+      description: "List monitors"
+    - name: get_monitor
+      description: "Get monitor details"
+    - name: list_dashboards
+      description: "List dashboards"
+    - name: search_traces
+      description: "Search APM traces"
+    - name: list_events
+      description: "List events"
+  env_vars:
+    - name: DD_API_KEY
+      required: true
+      secret: true
+      description: "Datadog API key"
+    - name: DD_APP_KEY
+      required: true
+      secret: true
+      description: "Datadog application key"
+    - name: DD_SITE
+      required: false
+      default: "datadoghq.com"
+      description: "Datadog site"

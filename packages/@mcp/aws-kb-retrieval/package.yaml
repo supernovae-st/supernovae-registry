@@ -1,0 +1,33 @@
+name: "@mcp/aws-kb-retrieval"
+version: "1.0.0"
+type: mcp
+description: "AWS Bedrock Knowledge Base retrieval for RAG applications"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["aws", "bedrock", "rag", "knowledge-base", "retrieval"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-aws-kb-retrieval"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: retrieve_from_knowledge_base
+      description: "Retrieve relevant documents from knowledge base"
+  env_vars:
+    - name: AWS_ACCESS_KEY_ID
+      required: true
+      secret: true
+      description: "AWS Access Key ID"
+    - name: AWS_SECRET_ACCESS_KEY
+      required: true
+      secret: true
+      description: "AWS Secret Access Key"
+    - name: AWS_REGION
+      required: true
+      description: "AWS Region"
+    - name: KNOWLEDGE_BASE_ID
+      required: true
+      description: "Bedrock Knowledge Base ID"

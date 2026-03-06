@@ -1,0 +1,35 @@
+name: "@models/vision/llava-phi3"
+version: "1.0.0"
+type: model
+description: "LLaVA-Phi3 - efficient multimodal model based on Phi-3"
+author: "microsoft"
+license: "MIT"
+homepage: "https://huggingface.co/xtuner/llava-phi-3-mini-hf"
+tags: ["vision", "multimodal", "phi3", "efficient"]
+
+source:
+  type: ollama
+  model: "llava-phi3"
+
+model:
+  category: vision
+  variants:
+    - name: "default"
+      ollama: "llava-phi3"
+      size: "2.9GB"
+      vram: "4GB"
+      best_for: "Efficient multimodal tasks"
+
+  capabilities:
+    - image-understanding
+    - visual-qa
+    - image-description
+
+  recommended_for:
+    - "Lightweight vision tasks"
+    - "Edge deployment"
+    - "Quick image analysis"
+
+  input_types:
+    - text
+    - image

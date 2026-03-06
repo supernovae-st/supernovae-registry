@@ -1,0 +1,35 @@
+name: "@models/vision/moondream2"
+version: "1.0.0"
+type: model
+description: "Moondream 2 - tiny but capable vision model"
+author: "vikhyatk"
+license: "Apache-2.0"
+homepage: "https://huggingface.co/vikhyatk/moondream2"
+tags: ["vision", "tiny", "efficient", "image"]
+
+source:
+  type: ollama
+  model: "moondream"
+
+model:
+  category: vision
+  variants:
+    - name: "default"
+      ollama: "moondream"
+      size: "1.7GB"
+      vram: "2GB"
+      best_for: "Ultra-lightweight vision"
+
+  capabilities:
+    - image-understanding
+    - visual-qa
+    - object-detection
+
+  recommended_for:
+    - "Resource-constrained devices"
+    - "Quick image queries"
+    - "Edge deployment"
+
+  input_types:
+    - text
+    - image

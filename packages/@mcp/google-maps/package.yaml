@@ -1,0 +1,35 @@
+name: "@mcp/google-maps"
+version: "1.0.0"
+type: mcp
+description: "Google Maps API for location search, directions, and geocoding"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["maps", "google", "location", "directions", "geocoding", "places"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-google-maps"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: maps_geocode
+      description: "Convert address to coordinates"
+    - name: maps_reverse_geocode
+      description: "Convert coordinates to address"
+    - name: maps_search_places
+      description: "Search for places"
+    - name: maps_get_place_details
+      description: "Get place details"
+    - name: maps_get_directions
+      description: "Get directions between points"
+    - name: maps_get_distance_matrix
+      description: "Get distances between origins/destinations"
+    - name: maps_get_elevation
+      description: "Get elevation data"
+  env_vars:
+    - name: GOOGLE_MAPS_API_KEY
+      required: true
+      secret: true
+      description: "Google Maps API key"

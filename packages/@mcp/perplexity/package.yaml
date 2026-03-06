@@ -1,0 +1,23 @@
+name: "@mcp/perplexity"
+version: "1.0.0"
+type: mcp
+description: "Perplexity AI search with citations and real-time web access"
+author: "perplexity"
+license: "MIT"
+homepage: "https://github.com/perplexity-ai/perplexity-mcp"
+tags: ["search", "ai", "perplexity", "web", "research", "citations"]
+
+source:
+  type: npm
+  package: "perplexity-mcp"
+  version: "^1.0.0"
+
+mcp:
+  tools:
+    - name: perplexity_search_web
+      description: "Search web with AI-powered synthesis and citations"
+  env_vars:
+    - name: PERPLEXITY_API_KEY
+      required: true
+      secret: true
+      description: "Perplexity API key"

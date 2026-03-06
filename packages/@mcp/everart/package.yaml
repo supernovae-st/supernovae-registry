@@ -1,0 +1,25 @@
+name: "@mcp/everart"
+version: "1.0.0"
+type: mcp
+description: "AI image generation with EverArt API"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["image", "generation", "ai", "art", "creative"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-everart"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: generate_image
+      description: "Generate image from prompt"
+    - name: list_models
+      description: "List available models"
+  env_vars:
+    - name: EVERART_API_KEY
+      required: true
+      secret: true
+      description: "EverArt API key"

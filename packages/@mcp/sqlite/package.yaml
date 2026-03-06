@@ -1,0 +1,30 @@
+name: "@mcp/sqlite"
+version: "1.0.0"
+type: mcp
+description: "SQLite database access with read-only queries and schema inspection"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["database", "sqlite", "sql", "query", "local"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-sqlite"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: read_query
+      description: "Execute read-only SQL query"
+    - name: write_query
+      description: "Execute write SQL query"
+    - name: create_table
+      description: "Create a new table"
+    - name: list_tables
+      description: "List all tables"
+    - name: describe_table
+      description: "Get table schema"
+  args:
+    - name: database_path
+      required: true
+      description: "Path to SQLite database file"

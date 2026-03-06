@@ -1,0 +1,36 @@
+name: "@mcp/sentry"
+version: "1.0.0"
+type: mcp
+description: "Sentry error tracking - issues, events, and project management"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["sentry", "errors", "monitoring", "debugging", "issues"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-sentry"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: list_organizations
+      description: "List Sentry organizations"
+    - name: list_projects
+      description: "List projects in organization"
+    - name: list_issues
+      description: "List project issues"
+    - name: get_issue_details
+      description: "Get issue details"
+    - name: list_events
+      description: "List issue events"
+    - name: get_event_details
+      description: "Get event details"
+  env_vars:
+    - name: SENTRY_AUTH_TOKEN
+      required: true
+      secret: true
+      description: "Sentry Auth Token"
+    - name: SENTRY_ORGANIZATION
+      required: false
+      description: "Default organization slug"

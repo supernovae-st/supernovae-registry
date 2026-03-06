@@ -1,0 +1,42 @@
+name: "@models/code/codegemma"
+version: "1.0.0"
+type: model
+description: "Google CodeGemma - Gemma fine-tuned for code tasks"
+author: "google"
+license: "Gemma License"
+homepage: "https://ai.google.dev/gemma"
+tags: ["code", "gemma", "google", "completion"]
+
+source:
+  type: ollama
+  model: "codegemma"
+
+model:
+  category: code
+  variants:
+    - name: "7b"
+      ollama: "codegemma:7b"
+      size: "5.0GB"
+      vram: "6GB"
+      best_for: "Code generation and completion"
+
+  benchmarks:
+    humaneval: 52.4
+    mbpp: 54.8
+
+  capabilities:
+    - code-generation
+    - code-completion
+    - code-infilling
+
+  recommended_for:
+    - "Code completion"
+    - "Quick code generation"
+    - "Infilling tasks"
+
+  languages:
+    - python
+    - javascript
+    - java
+    - cpp
+    - go

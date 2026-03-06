@@ -1,0 +1,25 @@
+name: "@mcp/tavily"
+version: "1.0.0"
+type: mcp
+description: "Tavily AI search - optimized for LLMs with clean, relevant results"
+author: "tavily"
+license: "MIT"
+homepage: "https://github.com/tavily-ai/tavily-mcp"
+tags: ["search", "ai", "tavily", "research", "web"]
+
+source:
+  type: npm
+  package: "tavily-mcp"
+  version: "^1.0.0"
+
+mcp:
+  tools:
+    - name: search
+      description: "Search web with Tavily"
+    - name: extract
+      description: "Extract content from URL"
+  env_vars:
+    - name: TAVILY_API_KEY
+      required: true
+      secret: true
+      description: "Tavily API key"

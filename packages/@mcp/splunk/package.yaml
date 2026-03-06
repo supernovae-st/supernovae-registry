@@ -1,0 +1,34 @@
+name: "@mcp/splunk"
+version: "1.0.0"
+type: mcp
+description: "Splunk search and analytics"
+author: "splunk"
+license: "Apache-2.0"
+homepage: "https://github.com/splunk/mcp-server-splunk"
+tags: ["splunk", "logs", "search", "analytics", "siem"]
+
+source:
+  type: npm
+  package: "@splunk/mcp-server-splunk"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: search
+      description: "Run Splunk search"
+    - name: list_indexes
+      description: "List indexes"
+    - name: list_saved_searches
+      description: "List saved searches"
+    - name: run_saved_search
+      description: "Run saved search"
+    - name: get_search_results
+      description: "Get search results"
+  env_vars:
+    - name: SPLUNK_URL
+      required: true
+      description: "Splunk instance URL"
+    - name: SPLUNK_TOKEN
+      required: true
+      secret: true
+      description: "Splunk HEC token"

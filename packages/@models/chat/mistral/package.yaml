@@ -1,0 +1,52 @@
+name: "@models/chat/mistral"
+version: "1.0.0"
+type: model
+description: "Mistral 7B - efficient and powerful instruction-following model"
+author: "mistral-ai"
+license: "Apache-2.0"
+homepage: "https://mistral.ai"
+tags: ["chat", "efficient", "instruction", "reasoning"]
+
+source:
+  type: ollama
+  model: "mistral"
+
+model:
+  category: chat
+  variants:
+    - name: "7b"
+      ollama: "mistral"
+      size: "4.1GB"
+      vram: "5GB"
+      best_for: "Efficient general-purpose tasks"
+    - name: "7b-instruct"
+      ollama: "mistral:instruct"
+      size: "4.1GB"
+      vram: "5GB"
+      best_for: "Instruction following"
+
+  benchmarks:
+    mmlu: 62.5
+    hellaswag: 81.0
+    arc: 74.0
+
+  capabilities:
+    - chat
+    - instruction-following
+    - reasoning
+    - long-context
+
+  recommended_for:
+    - "Efficient inference"
+    - "Long document processing"
+    - "Instruction following"
+
+  not_recommended_for:
+    - "Multilingual (use llama3.2)"
+
+  languages:
+    - en
+    - fr
+    - de
+    - es
+    - it

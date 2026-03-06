@@ -1,0 +1,41 @@
+name: "@mcp/filesystem"
+version: "1.0.0"
+type: mcp
+description: "Secure file system access with configurable allowed directories"
+author: "anthropic"
+license: "MIT"
+homepage: "https://github.com/modelcontextprotocol/servers"
+tags: ["filesystem", "files", "directories", "read", "write"]
+
+source:
+  type: npm
+  package: "@modelcontextprotocol/server-filesystem"
+  version: "^0.6.0"
+
+mcp:
+  tools:
+    - name: read_file
+      description: "Read complete contents of a file"
+    - name: read_multiple_files
+      description: "Read multiple files simultaneously"
+    - name: write_file
+      description: "Create or overwrite a file"
+    - name: edit_file
+      description: "Make line-based edits to a file"
+    - name: create_directory
+      description: "Create a new directory"
+    - name: list_directory
+      description: "List directory contents"
+    - name: directory_tree
+      description: "Get recursive directory tree"
+    - name: move_file
+      description: "Move or rename a file"
+    - name: search_files
+      description: "Search for files by pattern"
+    - name: get_file_info
+      description: "Get file metadata"
+  env_vars: []
+  args:
+    - name: allowed_directories
+      required: true
+      description: "List of directories to allow access to"

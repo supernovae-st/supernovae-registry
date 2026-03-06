@@ -1,0 +1,54 @@
+name: "@models/code/starcoder2"
+version: "1.0.0"
+type: model
+description: "BigCode StarCoder2 - trained on The Stack v2, excellent for code"
+author: "bigcode"
+license: "BigCode Open RAIL-M"
+homepage: "https://huggingface.co/bigcode/starcoder2"
+tags: ["code", "starcoder", "completion", "bigcode", "stack"]
+
+source:
+  type: ollama
+  model: "starcoder2"
+
+model:
+  category: code
+  variants:
+    - name: "3b"
+      ollama: "starcoder2:3b"
+      size: "1.7GB"
+      vram: "3GB"
+      best_for: "Lightweight code completion"
+    - name: "7b"
+      ollama: "starcoder2:7b"
+      size: "4.0GB"
+      vram: "5GB"
+      best_for: "Balanced code tasks"
+    - name: "15b"
+      ollama: "starcoder2:15b"
+      size: "9.0GB"
+      vram: "12GB"
+      best_for: "Complex code generation"
+
+  benchmarks:
+    humaneval: 46.3
+    mbpp: 52.4
+
+  capabilities:
+    - code-generation
+    - code-completion
+    - repository-level-code
+
+  recommended_for:
+    - "Multi-file code understanding"
+    - "Repository-level tasks"
+    - "Code completion"
+
+  languages:
+    - python
+    - javascript
+    - typescript
+    - java
+    - cpp
+    - go
+    - rust

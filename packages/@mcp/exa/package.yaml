@@ -1,0 +1,27 @@
+name: "@mcp/exa"
+version: "1.0.0"
+type: mcp
+description: "Exa AI search - neural search with embeddings and semantic understanding"
+author: "exa"
+license: "MIT"
+homepage: "https://github.com/exa-labs/exa-mcp-server"
+tags: ["search", "ai", "exa", "neural", "semantic", "embeddings"]
+
+source:
+  type: npm
+  package: "exa-mcp-server"
+  version: "^1.0.0"
+
+mcp:
+  tools:
+    - name: search
+      description: "Neural search with Exa"
+    - name: find_similar
+      description: "Find similar content"
+    - name: get_contents
+      description: "Get content from URLs"
+  env_vars:
+    - name: EXA_API_KEY
+      required: true
+      secret: true
+      description: "Exa API key"

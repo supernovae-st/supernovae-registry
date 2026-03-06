@@ -1,0 +1,36 @@
+name: "@mcp/milvus"
+version: "1.0.0"
+type: mcp
+description: "Milvus vector database - high-performance similarity search"
+author: "milvus"
+license: "Apache-2.0"
+homepage: "https://github.com/milvus-io/mcp-server-milvus"
+tags: ["vector", "database", "milvus", "embeddings", "similarity-search", "rag"]
+
+source:
+  type: npm
+  package: "@milvus/mcp-server-milvus"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_collections
+      description: "List collections"
+    - name: create_collection
+      description: "Create collection"
+    - name: insert
+      description: "Insert vectors"
+    - name: search
+      description: "Similarity search"
+    - name: query
+      description: "Query by filter"
+    - name: delete
+      description: "Delete vectors"
+  env_vars:
+    - name: MILVUS_URI
+      required: true
+      description: "Milvus connection URI"
+    - name: MILVUS_TOKEN
+      required: false
+      secret: true
+      description: "Milvus token (if Zilliz Cloud)"

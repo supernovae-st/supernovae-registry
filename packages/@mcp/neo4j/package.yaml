@@ -1,0 +1,35 @@
+name: "@mcp/neo4j"
+version: "1.0.0"
+type: mcp
+description: "Neo4j graph database - Cypher queries and schema inspection"
+author: "neo4j"
+license: "MIT"
+homepage: "https://github.com/neo4j/mcp-server-neo4j"
+tags: ["database", "graph", "neo4j", "cypher", "knowledge-graph"]
+
+source:
+  type: npm
+  package: "@neo4j/mcp-server-neo4j"
+  version: "^1.0.0"
+
+mcp:
+  tools:
+    - name: read_neo4j_cypher
+      description: "Execute read-only Cypher query"
+    - name: write_neo4j_cypher
+      description: "Execute write Cypher query"
+    - name: get_neo4j_schema
+      description: "Get database schema"
+  env_vars:
+    - name: NEO4J_URI
+      required: true
+      example: "bolt://localhost:7687"
+      description: "Neo4j connection URI"
+    - name: NEO4J_USERNAME
+      required: false
+      default: "neo4j"
+      description: "Neo4j username"
+    - name: NEO4J_PASSWORD
+      required: true
+      secret: true
+      description: "Neo4j password"

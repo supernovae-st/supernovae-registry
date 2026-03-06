@@ -1,0 +1,33 @@
+name: "@mcp/e2b"
+version: "1.0.0"
+type: mcp
+description: "E2B code execution sandboxes - run code safely in isolated environments"
+author: "e2b"
+license: "MIT"
+homepage: "https://github.com/e2b-dev/mcp-server-e2b"
+tags: ["e2b", "sandbox", "code-execution", "isolated", "python", "javascript"]
+
+source:
+  type: npm
+  package: "@e2b/mcp-server-e2b"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: create_sandbox
+      description: "Create code sandbox"
+    - name: execute_code
+      description: "Execute code in sandbox"
+    - name: upload_file
+      description: "Upload file to sandbox"
+    - name: download_file
+      description: "Download file from sandbox"
+    - name: run_command
+      description: "Run shell command"
+    - name: close_sandbox
+      description: "Close sandbox"
+  env_vars:
+    - name: E2B_API_KEY
+      required: true
+      secret: true
+      description: "E2B API key"

@@ -1,0 +1,42 @@
+name: "@mcp/supabase"
+version: "1.0.0"
+type: mcp
+description: "Supabase database, auth, storage, and edge functions"
+author: "supabase"
+license: "MIT"
+homepage: "https://github.com/supabase/mcp-server-supabase"
+tags: ["supabase", "database", "postgres", "auth", "storage", "functions"]
+
+source:
+  type: npm
+  package: "@supabase/mcp-server-supabase"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_tables
+      description: "List database tables"
+    - name: query
+      description: "Execute SQL query"
+    - name: insert
+      description: "Insert rows"
+    - name: update
+      description: "Update rows"
+    - name: delete
+      description: "Delete rows"
+    - name: list_storage_buckets
+      description: "List storage buckets"
+    - name: upload_file
+      description: "Upload file to storage"
+    - name: list_functions
+      description: "List edge functions"
+    - name: invoke_function
+      description: "Invoke edge function"
+  env_vars:
+    - name: SUPABASE_URL
+      required: true
+      description: "Supabase project URL"
+    - name: SUPABASE_SERVICE_KEY
+      required: true
+      secret: true
+      description: "Supabase service role key"

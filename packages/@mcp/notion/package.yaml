@@ -1,0 +1,37 @@
+name: "@mcp/notion"
+version: "1.0.0"
+type: mcp
+description: "Notion workspace - pages, databases, and blocks"
+author: "notion"
+license: "MIT"
+homepage: "https://github.com/notionhq/mcp-server-notion"
+tags: ["notion", "workspace", "pages", "databases", "notes"]
+
+source:
+  type: npm
+  package: "@notionhq/mcp-server-notion"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: search_pages
+      description: "Search pages and databases"
+    - name: get_page
+      description: "Get page content"
+    - name: create_page
+      description: "Create page"
+    - name: update_page
+      description: "Update page"
+    - name: query_database
+      description: "Query database"
+    - name: create_database_item
+      description: "Create database item"
+    - name: get_block_children
+      description: "Get block children"
+    - name: append_block_children
+      description: "Append blocks"
+  env_vars:
+    - name: NOTION_API_KEY
+      required: true
+      secret: true
+      description: "Notion integration token"

@@ -1,0 +1,37 @@
+name: "@mcp/linear"
+version: "1.0.0"
+type: mcp
+description: "Linear issue tracking - issues, projects, cycles, and teams"
+author: "linear"
+license: "MIT"
+homepage: "https://github.com/linear/mcp-server-linear"
+tags: ["linear", "issues", "projects", "agile", "tracking"]
+
+source:
+  type: npm
+  package: "@linear/mcp-server-linear"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: list_issues
+      description: "List issues"
+    - name: create_issue
+      description: "Create issue"
+    - name: update_issue
+      description: "Update issue"
+    - name: list_projects
+      description: "List projects"
+    - name: list_cycles
+      description: "List cycles"
+    - name: list_teams
+      description: "List teams"
+    - name: search_issues
+      description: "Search issues"
+    - name: add_comment
+      description: "Add comment to issue"
+  env_vars:
+    - name: LINEAR_API_KEY
+      required: true
+      secret: true
+      description: "Linear API key"

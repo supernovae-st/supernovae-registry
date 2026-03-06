@@ -1,0 +1,42 @@
+name: "@mcp/cloudflare"
+version: "1.0.0"
+type: mcp
+description: "Cloudflare Workers, KV, R2, D1, and more"
+author: "cloudflare"
+license: "MIT"
+homepage: "https://github.com/cloudflare/mcp-server-cloudflare"
+tags: ["cloudflare", "workers", "kv", "r2", "d1", "cdn", "edge"]
+
+source:
+  type: npm
+  package: "@cloudflare/mcp-server-cloudflare"
+  version: "^0.1.0"
+
+mcp:
+  tools:
+    - name: workers_list
+      description: "List Workers"
+    - name: workers_get
+      description: "Get Worker details"
+    - name: workers_deploy
+      description: "Deploy Worker"
+    - name: kv_list_namespaces
+      description: "List KV namespaces"
+    - name: kv_get
+      description: "Get KV value"
+    - name: kv_put
+      description: "Put KV value"
+    - name: r2_list_buckets
+      description: "List R2 buckets"
+    - name: r2_get_object
+      description: "Get R2 object"
+    - name: d1_query
+      description: "Query D1 database"
+  env_vars:
+    - name: CLOUDFLARE_API_TOKEN
+      required: true
+      secret: true
+      description: "Cloudflare API token"
+    - name: CLOUDFLARE_ACCOUNT_ID
+      required: true
+      description: "Cloudflare account ID"
